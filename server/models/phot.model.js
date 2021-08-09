@@ -18,7 +18,7 @@ const PhotSchema=new mongoose.Schema({
         type:String,
         require:true
     },
-    likes:[{user:{ type:Schema.Types.ObjectId, ref:'User'}}],
+    likers:[{type:Schema.Types.ObjectId, ref:'User'}],
 
 }, {timestamps: true});
 const Phot=mongoose.model("Phot",PhotSchema);
