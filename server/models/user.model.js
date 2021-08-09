@@ -1,10 +1,13 @@
 const mongoose = require("mongoose");
-
+require("./phot.model");
 const UserSchema = new mongoose.Schema({
 	name: {
 		type: String,
 		required: [true, "Name is required"]
 	  },
+	  
+		photo:[{type:mongoose.Schema.Types.ObjectId, ref:'Phot'}],
+	  
 	  email: {
 		type: String,
 		required: [true, "Email is required"],
@@ -26,14 +29,15 @@ const UserSchema = new mongoose.Schema({
 	}, {timestamps: true});
 
 const User = mongoose.model("User", UserSchema);
-UserSchema.virtual('confirmPassword')
-  .get( () => this._confirmPassword )
-  .set( value => this._confirmPassword = value );
-  UserSchema.pre('validate', function(next) {
-	if (this.password !== this.confirmPassword) {
-	  this.invalidate('confirmPassword', 'Password must match confirm password');
-	}
-	next();
-  });
+// UserSchema.virtual('confirmPassword')
+//   .get( () => this._confirmPassword )
+//   .set( value => this._confirmPassword = value );
+//   UserSchema.pre('validate', function(next) {
+// 	if (this.password !== this.confirmPassword) {
+// 	  this.invalidate('confirmPassword', 'Password must match confirm password');
+// 	}
+// 	next();
+//   });
+
 
 module.exports = User;
