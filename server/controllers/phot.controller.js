@@ -20,6 +20,11 @@ module.exports.findonePhot=(req,res)=>{
 };
 
 module.exports.creatNewPhot = async (req, res) => {
+     // User.findOneAndUpdate({_id: request.params.id},{
+    //     $push: { pohoto: {title:request.body.title, {desc:request.body.desc,
+    //     img:req.body.img,
+    //     likers:{name:request.body.likers} }}
+    // })
     const { desc,img,title} = request.body;
     await Phot.create({ desc,img,title})
         .then(photo=> {
@@ -38,6 +43,7 @@ module.exports.creatNewPhot = async (req, res) => {
 //     .catch(err => res.status(400).json({ message: "Something went wrong", error: err }));
 // };
  module.exports.updateExistingPhot=(req,res)=>{
+   
      Phot.findOneAndUpdate({_id:req.params.id},req.body,{new:true})
      .then(updatePhot=>res.json({phot:updatePhot}))
      .catch(err => res.json({ message: "Something went wrong", error: err }));
