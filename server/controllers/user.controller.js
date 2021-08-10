@@ -45,7 +45,7 @@ module.exports.loginUser = (req, res) => {
   })
 }
 module.exports.regUser = (req, res) => {
-  const { name, email, password } = req.body
+  const { name, email, password ,address } = req.body
   User.findOne({ email: email }, (err, user) => {
     if (user) {
       res.send({ message: "User already registerd" })
