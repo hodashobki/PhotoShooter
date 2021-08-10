@@ -1,5 +1,5 @@
 const Phot=require("../models/phot.model");
-
+const User = require("../models/user.model");
 // module.exports.findAllPost=(req,res)=>{
 //   Phot.find()
 //   .then(allPhot=>res.json({phots:allPhot})) 
@@ -8,34 +8,45 @@ const Phot=require("../models/phot.model");
 
 
 module.exports.findAllPost= (req,res) =>{
-    Phot.find().populate('likers')
+    Phot.find().populate('user')
     .then(photos=>res.json(photos))
     .catch(err=>res.json({ message: "Something went wrong", error: err}));
 }
 
 module.exports.findonePhot=(req,res)=>{
-    Phot.findOne({_id:req.params.id}).populate('likers')
+    Phot.findOne({_id:req.params.id}).populate('user')
     .then(onesinglePhot=>res.json({photo:onesinglePhot}))
     .catch(err=>res.json({message: "Something went wrong", error: err}));
 };
 
 module.exports.creatNewPhot = async (req, res) => {
-     // User.findOneAndUpdate({_id: request.params.id},{
-    //     $push: { pohoto: {title:request.body.title, {desc:request.body.desc,
+     // User.findOneAndUpdate({_id: req.params.id},{
+    //     $push: { photo: {title:req.body.title, {desc:req.body.desc,
     //     img:req.body.img,
-    //     likers:{name:request.body.likers} }}
+    //     comment:{text:req.body.user} }}
     // })
-    const { desc,img,title} = request.body;
-    await Phot.create({ desc,img,title})
-        .then(photo=> {
-            User.findOneAndUpdate({'_id':id},{ 
-                $push:{likers:photo}
-             })
-             .catch(err => res.json(err));
-             return res.json(photo)
-        })
-        .catch(err => res.status(400).json({ message: "Something went wrong", error: err }))
-}
+    try{
+    const {desc,img,title} = req.body;
+    const user =await User.findOne({_id: req.params.id})
+    console.log("user")
+    console.log(user)
+    const photo = await Phot.create({ user,desc,img,title})
+    if(!photo){
+        res.status(400).json({message:"something is wrong"})
+    }
+    console.log("Photo")
+    console.log(photo);
+    
+    const finalUser =await User.findOneAndUpdate({_id: req.params.id},{
+        $push:{photo:photo}
+    })
+
+        console.log("Final User")
+        res.json(finalUser);
+    }catch(err){
+        console.log(err)
+    }
+    }
  
 // module.exports.creatNewPhot=(req,res)=>{
 //     Phot.create(req.body)

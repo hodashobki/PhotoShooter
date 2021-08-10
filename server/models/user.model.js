@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 require("./phot.model");
+require("./comments.model");
 const UserSchema = new mongoose.Schema({
 	name: {
 		type: String,
@@ -7,6 +8,7 @@ const UserSchema = new mongoose.Schema({
 	  },
 	  
 		photo:[{type:mongoose.Schema.Types.ObjectId, ref:'Phot'}],
+		comments:[{type:mongoose.Schema.Types.ObjectId, ref:'Comment'}],
 	  
 	  email: {
 		type: String,
