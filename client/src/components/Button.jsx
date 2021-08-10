@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PhotographerList = (props) => {
+const Button = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const PhotographerList = (props) => {
     )
 }
 
-export default PhotographerList
+export default Button

@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import {Router} from '@reach/router'
 import './App.css';
+import Main from './views/Main'
+import Login from './components/sign/Login'
+import Register from './components/sign/Register'
+import CreatePhoto from './views/CreatePhoto'
+import PhotographerDetail from './views/PhotographerDetail'
+import Chat from './views/Chat'
+import PhotoDetails from './views/PhotoDetails'
+import Header from './components/Header'
+import Footer from './components/Footer'
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Router >
+      <Main path ="/"/>
+      <Login path = "/login"/>
+      <Register path = "/register"/>
+      <PhotoDetails path = "/photo/:id"/>   
+      <CreatePhoto path ="/createPhoto" />
+      <PhotographerDetail path= "/photographer/:id"/>
+      <Chat path= "/chat"/>
+
+      </Router>
+      <Footer />
     </div>
   );
 }
