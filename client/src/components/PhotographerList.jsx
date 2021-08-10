@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PhotoForm = (props) => {
+const PhotographerList = (props) => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const PhotoForm = (props) => {
     )
 }
 
-export default PhotoForm
+export default PhotographerList
