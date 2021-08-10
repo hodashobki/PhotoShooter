@@ -18,13 +18,14 @@ function App() {
     <div className="App">
       <Logo />
       <Header />
+      <CreatePhoto/>
       <CreatComment/>
       <Router >
       <Main path ="/"/>
       <Login path = "/login"/>
       <Register path = "/register"/>
       <PhotoDetails path = "/photo/:id"/>   
-      <CreatePhoto path ="/createPhoto" />
+      {/* <CreatePhoto path ="/createPhoto" /> */}
       <PhotographerDetail path= "/photographer/:id"/>
       <Chat path= "/chat"/>
 

@@ -20,7 +20,7 @@ const styles = {
 }
 
 const PhotoForm = (props) => {
-    const {onSubmitProp, name_error}= props;
+    const {onSubmitProp,photo_error}= props;
     const [desc,setDesc]=useState("");
     const [img,setImg]=useState("");
     const [title,setTitle]=useState("");
@@ -86,9 +86,9 @@ const PhotoForm = (props) => {
    
     return (
         <div>
-            {name_error.map((err, index) => <p  key={index}>{err}</p>)}
+            {photo_error.map((err, index) => <p  key={index}>{err}</p>)}
             <Paper elevation={3} style={styles.paper}>
-                <h3>Plan a New Project</h3>
+                <h3>Create your album</h3>
         <form onSubmit={onSubmitHandler}>
             <br></br>
                 <FormControl variant="outlined"  style={styles.input}>
@@ -112,7 +112,7 @@ const PhotoForm = (props) => {
                 </FormControl>
                 <br></br>
                 <Button type="submit" variant="contained" color="primary">
-                    Plan project
+                    Create your album
                 </Button>
                 
                 
