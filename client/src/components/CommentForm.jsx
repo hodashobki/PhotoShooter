@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
-import { Button } from '@material-ui/core';
+import { Button, Paper } from '@material-ui/core';
+
+const styles = {
+    paper: {
+        width: "50rem", padding: "1rem"
+    },
+    input: {
+        marginBottom: "1rem"
+    },
+    button: {
+        width: "50%"
+    }
+}
 
 const CommentForm = (props) => {
 
@@ -28,13 +40,20 @@ const CommentForm = (props) => {
     }
     return (
         <div>
+           <Paper elevation={3} style={styles.paper}>
             {text_error.map((err, index) => <p style={{color:"red"}} key={index}>{err}</p>)}
+           
             <form onSubmit={onSubmitHandler}>
-            <TextField variant="filled"   onChange={(e)=>validateText(e.target.value)} value={text}/>
+            <TextField variant="filled" onChange={(e)=>validateText(e.target.value)} value={text}/>
+            {error&&
+            <p style={{color:"red"}}>{error}</p>
+            }
             <Button type="submit" variant="contained" color="primary">
             Comment here
            </Button>
             </form>
+            <p>{text}</p>
+            </Paper>
             
         </div>
     )
