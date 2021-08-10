@@ -7,9 +7,9 @@ module.exports.findAllUsers = (req, res) => {
 };
 
 module.exports.findOneSingleUser = (req, res) => {
-	User.findOne({ _id: req.params.id })
-		.then(oneSingleUser => res.json({ user: oneSingleUser }))
-		.catch(err => res.json({ message: "Something went wrong", error: err }));
+  User.findOne({ _id: req.params.id })
+    .then(oneSingleUser => res.json({ user: oneSingleUser }))
+    .catch(err => res.json({ message: "Something went wrong", error: err }));
 };
 
 module.exports.createNewUser = (req, res) => {
@@ -29,3 +29,42 @@ module.exports.deleteAnExistingUser = (req, res) => {
     .then(result => res.json({ result: result }))
     .catch(err => res.json({ message: "Something went wrong", error: err }));
 };
+//login and reg
+module.exports.loginUser = (req, res) => {
+  const { email, password } = req.body
+  User.findOnelog({ email: email }, (err, user) => {
+    if (user) {
+      if (password === user.password) {
+        res.send({ message: "Login Successfull", user: user })
+      } else {
+        res.send({ message: "Password didn't match" })
+      }
+    } else {
+      res.send({ message: "User not registered" })
+    }
+  })
+}
+module.exports.regUser = (req, res) => {
+  const { name, email, password } = req.body
+  User.findOne({ email: email }, (err, user) => {
+    if (user) {
+      res.send({ message: "User already registerd" })
+    } else {
+      const user = new User({
+        name,
+        email,
+        password,
+        address
+      })
+      user.save(err => {
+        if (err) {
+          res.send(err)
+        } else {
+          res.send({ message: "Successfully Registered, Please login now." })
+        }
+      })
+    }
+  })
+
+}
+
