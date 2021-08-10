@@ -16,5 +16,6 @@ AllMyUserRoutes(app);
 // require("./routes/phot.routes")(app);
 const AllPhots=require("./routes/phot.routes");
 AllPhots(app);
+require("./routes/comment.routes")(app);
 
 app.listen(8000, () => console.log("The server is all fired up on port 8000"));
