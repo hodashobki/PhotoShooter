@@ -112,11 +112,11 @@ export default function SignInSide() {
                             <Grid item xs>
                                 {/* <Link href="#" variant="body2">
                                     Forgot password?
-                                </Link> */}
+                                </Link > */}
                             </Grid>
                             <Grid item>
                                 <Link href="/register" variant="body2">
-                                    {"Don't have an account? Sign Up"}
+                                    {"Don't have an account? Register"}
                                 </Link>
                             </Grid>
                         </Grid>
