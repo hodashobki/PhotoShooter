@@ -10,6 +10,7 @@ import PhotoDetails from './views/PhotoDetails'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Logo from './components/Logo';
+import CreatComment from './views/CreatComment';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     <div className="App">
       <Logo />
       <Header />
+      <CreatComment/>
       <Router >
       <Main path ="/"/>
       <Login path = "/login"/>

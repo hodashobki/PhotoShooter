@@ -2,11 +2,13 @@ import React from 'react'
 import {useState } from 'react'
 import axios from 'axios';
 import { navigate, Link } from '@reach/router';
-import CommentForm from '../Components/CommentForm';
+import CommentForm from '../components/CommentForm';
 
 const CreatComment = (props) => {
+
+    const {idu,idp}=props;
     const [error, setError]= useState([]);
-    const createComments = player => {
+    const createComments =  comment => {
         axios.post('http://localhost:8000/api/comment/new/'+idu+"/"+idp, comment)
             .then(res=>{
                 // navigate("/"); //navigate to the page where the photo is displayed
@@ -23,8 +25,8 @@ const CreatComment = (props) => {
     }
     return (
         <div>
-           
-            <CommentForm  onSubmitProp={createComments}  text_error={error}/>
+           <h1>The Comment Form</h1>
+            < CommentForm  onSubmitProp={createComments}  text_error={error}/>
         </div>
     )
 }
