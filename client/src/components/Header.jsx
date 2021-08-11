@@ -1,7 +1,7 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-
+import { navigate } from '@reach/router';
 import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles,createTheme } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
@@ -64,6 +64,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const home = (e)=> {
+  e.preventDefault();
+  navigate("/")
+}
+
+const login = (e)=> {
+  e.preventDefault();
+  navigate("/login")
+}
+
 export default function SearchAppBar() {
 
   const classes = useStyles();
@@ -74,8 +84,8 @@ export default function SearchAppBar() {
         <Toolbar style = {{ display:"flex" , justifyContent: "space-between"}}>
           <Logo />
           <div style = {{ display:"flex" , justifyContent: "space-between"}}>
-          <Button href= "/" color="inherit">Home</Button>
-          <Button href= "/login" color="inherit">Sign in</Button>
+          <Button color="inherit" onClick={home}>Home</Button>
+          <Button color="inherit" onClick={login}>Sign in</Button>
           
 
 

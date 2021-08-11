@@ -1,5 +1,7 @@
 import React from 'react'
 import logo from '../images/logo.png'
+import { navigate } from '@reach/router';
+
 
 const Logo = () => {
 
@@ -9,9 +11,16 @@ const Logo = () => {
             hieght: "100px"
         }
     }
+
+    const home = (e)=> {
+        e.preventDefault();
+        navigate("/")
+      }
+
+
     return (
         <div>
-            <a href="/"><img style={style.lo} src={logo} alt="PhotoShooter logo" /></a>
+            <img style={style.lo} src={logo} alt="PhotoShooter logo" onClick={home} />
             
         </div>
     )
