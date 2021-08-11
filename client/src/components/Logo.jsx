@@ -2,9 +2,17 @@ import React from 'react'
 import logo from '../images/logo.png'
 
 const Logo = () => {
+
+    const style ={
+        lo:{
+            width: "200px",
+            hieght: "100px"
+        }
+    }
     return (
         <div>
-            <img src={logo} alt="PhotoShooter logo" />
+            <a href="/"><img style={style.lo} src={logo} alt="PhotoShooter logo" /></a>
+            
         </div>
     )
 }

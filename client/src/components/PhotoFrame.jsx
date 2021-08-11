@@ -1,12 +1,11 @@
 import React from 'react'
 
-const Main = (props) => {
+const PhotoFrame = () => {
     return (
         <div>
-
             
         </div>
     )
 }
 
-export default Main
+export default PhotoFrame

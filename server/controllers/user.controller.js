@@ -12,11 +12,11 @@ module.exports.findOneSingleUser = (req, res) => {
     .catch(err => res.json({ message: "Something went wrong", error: err }));
 };
 
-module.exports.createNewUser = (req, res) => {
-  User.create(req.body)
-    .then(newlyCreatedUser => res.json({ user: newlyCreatedUser }))
-    .catch(err => res.json({ message: "Something went wrong", error: err }));
-};
+// module.exports.createNewUser = (req, res) => {
+//   User.create(req.body)
+//     .then(newlyCreatedUser => res.json({ user: newlyCreatedUser }))
+//     .catch(err => res.json({ message: "Something went wrong", error: err }));
+// };
 
 module.exports.updateExistingUser = (req, res) => {
   User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
