@@ -10,7 +10,7 @@ import PhotoDetails from './views/PhotoDetails'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Logo from './components/Logo';
-import CreatComment from './views/CreatComment';
+
 
 
 function App() {
@@ -18,14 +18,12 @@ function App() {
     <div className="App">
       <Logo />
       <Header />
-      <CreatePhoto/>
-      <CreatComment/>
       <Router >
       <Main path ="/"/>
       <Login path = "/login"/>
       <Register path = "/register"/>
       <PhotoDetails path = "/photo/:id"/>   
-      {/* <CreatePhoto path ="/createPhoto" /> */}
+      <CreatePhoto path ="/createPhoto" />
       <PhotographerDetail path= "/photographer/:id"/>
       <Chat path= "/chat"/>
 

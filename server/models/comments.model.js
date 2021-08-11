@@ -7,7 +7,7 @@ const CommentsSchema=new mongoose.Schema({
          required:[true,"you Must add a comment before submit"]
      },
      user:{
-        type:String,
+        type:Schema.Types.ObjectId, ref:'User'
     }
 })
 const Comment=mongoose.model("Comment",CommentsSchema);

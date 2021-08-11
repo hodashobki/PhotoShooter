@@ -45,6 +45,7 @@ module.exports.creatNewPhot = async (req, res) => {
         res.json(finalUser);
     }catch(err){
         console.log(err)
+        res.status(400).json(err)
     }
     }
  
