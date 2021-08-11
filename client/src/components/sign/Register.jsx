@@ -76,7 +76,6 @@ export default function Register()  {
             const { name, email, password, reEnterPassword } = user
             if( name && email && password && (password === reEnterPassword)){
                 axios.post("http://localhost:8000/register", user)
-                // axios.post("http://localhost:9002/api/register", user)
                 .then( res => {
                     alert(res.data.message)
                     history.push("/login")
@@ -95,7 +94,7 @@ export default function Register()  {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign up
+                    Register
                 </Typography>
                 <form className={classes.form} noValidate>
                     <Grid container spacing={2}>
