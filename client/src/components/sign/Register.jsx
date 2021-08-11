@@ -75,11 +75,14 @@ export default function Register()  {
         const register = () => {
             const { name, email, password, reEnterPassword } = user
             if( name && email && password && (password === reEnterPassword)){
-                axios.post("http://localhost:8000/register", user)
+                axios.post("http://localhost:8000/api/register", user)
                 .then( res => {
                     alert(res.data.message)
-                    history.push("/login")
+                    history.push("/api/login")
+                    // history.push("/login")
+
                 })
+                
             } else {
                 alert("invlid input")
             }
