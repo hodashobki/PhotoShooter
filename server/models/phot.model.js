@@ -10,14 +10,17 @@ const PhotSchema=new mongoose.Schema({
     },
     desc:{
         type:String,
-        required:[true,"This field must not be Empty"]
+        required:[true,"This field must not be Empty"],
+        minlength: [5, "Description must be at least 5 characters long"],
     },
     img:{
         type:String,
+        required:[true,"This field must not be Empty"]
     },
     title:{
         type:String,
-        required:true
+        required:[true,"This field must not be Empty"],
+        minlength: [3, "Title must be at least 3 characters long"],
     },
     like:{type:Number},
     // [{type:mongoose.Schema.Types.ObjectId, ref:'Message'}]

@@ -13,7 +13,7 @@ module.exports.createComments = async(req,res)=>{
     // .then(newComment=>res.json({comment:newComment}))
     // .catch(err => res.status(400).json({ message: "Something went wrong", error: err }));
 try{
-    console.log("asd");
+    console.log("Hoda");
     const {text}=req.body;
     const user=await User.findOne({_id:req.params.idu})
     const photo=await Phot.findOne({_id:req.params.idp})
