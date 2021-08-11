@@ -59,7 +59,7 @@ export default function Register()  {
         const [ user, setUser] = useState({
             name: "",
             email:"",
-            address:"",
+            address:"", //lname=address
             password:"",
             reEnterPassword: ""
         })
@@ -73,12 +73,12 @@ export default function Register()  {
         }
     
         const register = () => {
-            const { name, email, password, reEnterPassword } = user
-            if( name && email && password && (password === reEnterPassword)){
+            const { name, email, address , password, reEnterPassword } = user
+            if( name && address && email && password && (password === reEnterPassword)){
                 axios.post("http://localhost:8000/api/register", user)
                 .then( res => {
                     alert(res.data.message)
-                    history.push("/api/login")
+                    history.push("/login")
                     // history.push("/login")
 
                 })
@@ -104,7 +104,7 @@ export default function Register()  {
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
-                                autoComplete="fname"
+                                autoComplete="name"
                                 name="firstName"
                                 variant="outlined"
                                 required
@@ -112,9 +112,23 @@ export default function Register()  {
                                 id="firstName"
                                 value={user.name}
                                 placeholder="Your Name"
-                                 onChange={ handleChange }
-                                label="First Name"
+                                onChange={ handleChange }
+                                label="Your Name"
                                 autoFocus
+                            />
+                        </Grid>
+                        <Grid item xs={12} >
+                            <TextField
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="lastName"
+                                label="Your address"
+                                name="lastName"
+                                autoComplete="address"
+                                value={user.address}
+                                placeholder="Your address" 
+                                onChange={ handleChange }
                             />
                         </Grid>
                         {/* <Grid item xs={12} sm={6}>
@@ -142,8 +156,10 @@ export default function Register()  {
                                 autoComplete="email"
                             />
                         </Grid>
-                        <Grid item xs={12}>
+
+                        {/* <Grid item xs={12}>
                             <TextField
+                            autoComplete="address"
                                 variant="outlined"
                                 required
                                 fullWidth
@@ -153,9 +169,9 @@ export default function Register()  {
                                 value={user.address}
                                 placeholder="Your address" 
                                 onChange={ handleChange }
-                                autoComplete="address"
+                                
                             />
-                        </Grid>
+                        </Grid> */}
                         <Grid item xs={12}>
                             <TextField
                                 variant="outlined"
@@ -191,7 +207,7 @@ export default function Register()  {
                     </Button>
                     <Grid container justifyContent="flex-end">
                         <Grid item>
-                            <Link href="/api/login" variant="body2">
+                            <Link href="/login" variant="body2">
                                 Already have an account? Log In
                             </Link>
                         </Grid>

@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { useState } from "react"
-import "./login.css"
+// import "./login.css"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 
@@ -65,30 +65,30 @@ export default function Login({ setLoginUser }) {
     const classes = useStyles();
     // const Login = ({ setLoginUser }) => {
 
-        const history = useHistory()
-    
-        const [user, setUser] = useState({
-            email: "",
-            password: ""
+    const history = useHistory()
+
+    const [user, setUser] = useState({
+        email: "",
+        password: ""
+    })
+
+    const handleChange = e => {
+        const { name, value } = e.target
+        setUser({
+            ...user,
+            [name]: value
         })
-    
-        const handleChange = e => {
-            const { name, value } = e.target
-            setUser({
-                ...user,
-                [name]: value
+    }
+
+    const login = () => {
+        axios.post("http://localhost:8000/api/login", user)
+            .then(res => {
+                alert(res.data.message)
+                setLoginUser(res.data.user)
+                // history.push("/login")
+                history.push("/")
             })
-        }
-    
-        const login = () => {
-            axios.post("http://localhost:8000/api/login", user)
-                .then(res => {
-                    alert(res.data.message)
-                    setLoginUser(res.data.user)
-                    history.push("/api/login")
-                    // history.push("/")
-                })
-        }
+    }
 
     return (
         <Grid container component="main" className={classes.root}>
@@ -151,10 +151,10 @@ export default function Login({ setLoginUser }) {
                                     Forgot password?
                                 </Link > */}
                             </Grid>
-                            <Grid item>
-                                <Link href="/api/register" variant="body2">
-                                    {/* <Button onClick={() => history.push("/api/register")></Button> */}
-                                    {"Don't have an account? Register"}
+                            <Grid item >
+                            {/* onClick={() => history.push("/register") */}
+                                <Link href="/register" variant="body2" >
+                                {"Don't have an account? Register"}
                                 </Link>
                             </Grid>
                         </Grid>
