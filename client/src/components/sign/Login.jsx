@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SignInSide({ setLoginUser }) {
+export default function Login({ setLoginUser }) {
     const classes = useStyles();
     // const Login = ({ setLoginUser }) => {
 
@@ -82,11 +82,11 @@ export default function SignInSide({ setLoginUser }) {
     
         const login = () => {
             axios.post("http://localhost:8000/api/login", user)
-                // axios.post("http://localhost:9002/api/login", user)
                 .then(res => {
                     alert(res.data.message)
                     setLoginUser(res.data.user)
-                    history.push("/")
+                    history.push("/api/login")
+                    // history.push("/")
                 })
         }
 
