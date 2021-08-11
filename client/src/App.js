@@ -11,18 +11,17 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Logo from './components/Logo';
 
-
-
 function App() {
   return (
     <div className="App">
       <Header />
+
       <Router >
       <Main path ="/"/>
       <Login path = "/login"/>
       <Register path = "/register"/>
-      <PhotoDetails path = "/photo/:id"/>   
-      <CreatePhoto path ="/createPhoto" />
+      <PhotoDetails path = "/photo/:idp"/>   
+      <CreatePhoto path ="/createPhoto/:idu" />
       <PhotographerDetail path= "/photographer/:id"/>
       <Chat path= "/chat"/>
 

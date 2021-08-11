@@ -3,6 +3,7 @@ import {useState } from 'react'
 import axios from 'axios';
 import { navigate, Link } from '@reach/router';
 import CommentForm from '../components/CommentForm';
+import { Box } from '@material-ui/core';
 
 const CreatComment = (props) => {
 
@@ -23,10 +24,19 @@ const CreatComment = (props) => {
               setError(errorArr);
           })       
     }
+
     return (
         <div>
-           <h1>The Comment Form</h1>
-            < CommentForm  onSubmitProp={createComments}  text_error={error}/>
+            <Box style= {{width:"500px" , height:"500px" ,backgroundColor:"#e0e0e0", marginLeft:"10px", overflowY:"scroll"}}>
+            
+            
+            </Box>
+            <div style= {{width:"500px" ,backgroundColor:"#e0e0e0", marginLeft:"10px"}}>
+            < CommentForm onSubmitProp={createComments}  text_error={error}/>
+
+            </div>
+
+            
         </div>
     )
 }

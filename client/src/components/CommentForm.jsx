@@ -39,22 +39,20 @@ const CommentForm = (props) => {
         }
     }
     return (
-        <div>
-           <Paper elevation={3} style={styles.paper}>
+        <div >
+            
             {text_error.map((err, index) => <p style={{color:"red"}} key={index}>{err}</p>)}
            
             <form onSubmit={onSubmitHandler}>
-            <TextField variant="filled" onChange={(e)=>validateText(e.target.value)} value={text}/>
-            {error&&
+            <TextField style={{width:"100%"}} variant="filled" onChange={(e)=>validateText(e.target.value)} value={text}/>
+
+            <Button style={{display:"block"}} type="submit" variant="contained" color="primary">
+            Comment
+           </Button>
+           {error&&
             <p style={{color:"red"}}>{error}</p>
             }
-            <Button type="submit" variant="contained" color="primary">
-            Comment here
-           </Button>
             </form>
-            <p>{text}</p>
-            </Paper>
-            
         </div>
     )
 }
