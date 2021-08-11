@@ -100,7 +100,7 @@ export default function Login({ setLoginUser }) {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Log in
+                        Log In
                     </Typography>
                     <form className={classes.form} noValidate>
                         <TextField
