@@ -99,6 +99,7 @@ export default function Register()  {
                 <Typography component="h1" variant="h5">
                     Register
                 </Typography>
+                {console.log("User", user)}
                 <form className={classes.form} noValidate>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
@@ -109,11 +110,14 @@ export default function Register()  {
                                 required
                                 fullWidth
                                 id="firstName"
+                                value={user.name}
+                                placeholder="Your Name"
+                                 onChange={ handleChange }
                                 label="First Name"
                                 autoFocus
                             />
                         </Grid>
-                        <Grid item xs={12} sm={6}>
+                        {/* <Grid item xs={12} sm={6}>
                             <TextField
                                 variant="outlined"
                                 required
@@ -123,7 +127,7 @@ export default function Register()  {
                                 name="lastName"
                                 autoComplete="lname"
                             />
-                        </Grid>
+                        </Grid> */}
                         <Grid item xs={12}>
                             <TextField
                                 variant="outlined"
@@ -132,7 +136,24 @@ export default function Register()  {
                                 id="email"
                                 label="Email Address"
                                 name="email"
+                                value={user.email}
+                                 placeholder="Your Email"
+                                 onChange={ handleChange }
                                 autoComplete="email"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="address"
+                                label="Address"
+                                name="adress"
+                                value={user.address}
+                                placeholder="Your address" 
+                                onChange={ handleChange }
+                                autoComplete="address"
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -144,15 +165,19 @@ export default function Register()  {
                                 label="Password"
                                 type="password"
                                 id="password"
+                                value={user.password}
+                                 placeholder="Your Password"
+                                  onChange={ handleChange }
                                 autoComplete="current-password"
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        
+                        {/* <Grid item xs={12}>
                             <FormControlLabel
                                 control={<Checkbox value="allowExtraEmails" color="primary" />}
                                 label="I want to receive inspiration, marketing promotions and updates via email."
                             />
-                        </Grid>
+                        </Grid> */}
                     </Grid>
                     <Button
                         type="submit"
@@ -160,13 +185,14 @@ export default function Register()  {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        onClick={register}
                     >
-                        Sign Up
+                        Register
                     </Button>
                     <Grid container justifyContent="flex-end">
                         <Grid item>
-                            <Link href="#" variant="body2">
-                                Already have an account? Sign in
+                            <Link href="/api/login" variant="body2">
+                                Already have an account? Log In
                             </Link>
                         </Grid>
                     </Grid>
