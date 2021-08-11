@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import React, { useState } from "react"
+// import "./register.css"
+import axios from "axios"
+import { useHistory } from "react-router-dom"
 
 function Copyright() {
     return (
@@ -46,8 +50,42 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SignUp() {
+export default function Register()  {
     const classes = useStyles();
+    // const Register = () => {
+
+        const history = useHistory()
+    
+        const [ user, setUser] = useState({
+            name: "",
+            email:"",
+            address:"",
+            password:"",
+            reEnterPassword: ""
+        })
+    
+        const handleChange = e => {
+            const { name, value } = e.target
+            setUser({
+                ...user,
+                [name]: value
+            })
+        }
+    
+        const register = () => {
+            const { name, email, password, reEnterPassword } = user
+            if( name && email && password && (password === reEnterPassword)){
+                axios.post("http://localhost:8000/register", user)
+                // axios.post("http://localhost:9002/api/register", user)
+                .then( res => {
+                    alert(res.data.message)
+                    history.push("/login")
+                })
+            } else {
+                alert("invlid input")
+            }
+            
+        }
 
     return (
         <Container component="main" maxWidth="xs">
