@@ -30,20 +30,23 @@ const useStyles = makeStyles((theme) => ({
   
 const PhotographerList = (props) => {
 const classes = useStyles();
+const {photographer}=props;
+
     return (
-{/* <div className={classes.root}>
+    
+   <div className={classes.root}>
       <ImageList className={classes.imageList} cols={2.5}>
-        {itemData.map((item) => (
-          <ImageListItem key={item.img}>
-            <img src={item.img} alt={item.title} />
+        {photographer.photo.map((person) => (
+          <ImageListItem key={person._id}>
+            <img src={person.img} alt={person.title} />
             <ImageListItemBar
-              title={item.title}
+              title={person.title}
               classes={{
                 root: classes.titleBar,
                 title: classes.title,
               }}
               actionIcon={
-                <IconButton aria-label={`star ${item.title}`}>
+                <IconButton aria-label={`star ${person.title}`}>
                   <StarBorderIcon className={classes.title} />
                 </IconButton>
               }
@@ -51,8 +54,10 @@ const classes = useStyles();
           </ImageListItem>
         ))}
       </ImageList>
-    </div>     */}
-    )
-}
+    </div>    
+  
+
+  )
+ }
 
 export default PhotographerList
