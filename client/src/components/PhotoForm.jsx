@@ -1,4 +1,11 @@
 import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import FileBase64 from 'react-file-base64';
+import useStyles from './styles.js';
+import { useDispatch } from 'react-redux';
+import { createPost, updatePost } from '../../actions/posts.js';
+import { useSelector } from 'react-redux';
 
 import {
     Paper,
@@ -28,6 +35,13 @@ const PhotoForm = (props) => {
     const [imgerror,setimgerror]=useState("");
     const [titleerror,setTittleError]=useState("");
     const [like,setLike]=useState(0);
+    const [postData, setPostData] = useState({
+        user: '',
+        title: '',
+        desc: '',
+        like: '',
+        selectedFile: ''
+    });
 
     
     // (value===""
@@ -83,11 +97,47 @@ const PhotoForm = (props) => {
         }
        
     }
+    //ayat work
+    const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null); 
+    const dispatch = useDispatch();
+    const classes = useStyles();
+
+
+    useEffect(() => {
+        if(post) setPostData(post);
+    }, [post]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if(currentId)
+        {
+            dispatch(updatePost(currentId, postData));
+        }
+        else
+        {
+            dispatch(createPost(postData));
+        }
+        clear();
+    }
+
+    const clear = () => {
+        setCurrentId(null);
+
+        setPostData({ 
+            user: '',
+            title: '',
+            desc: '',
+            like :'',
+            selectedFile: ''
+        });
+        
+    }
    
     return (
         <div>
             {photo_error.map((err, index) => <p  key={index}>{err}</p>)}
-            <Paper elevation={3} style={styles.paper}>
+            <Paper className={classes.paper} elevation={3} style={styles.paper}>
                 <h3>Create your album</h3>
         <form onSubmit={onSubmitHandler}>
             <br></br>
