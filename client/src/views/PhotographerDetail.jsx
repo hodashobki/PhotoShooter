@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import PhotographerList from '../components/PhotographerList';
 const PhotographerDetail = (props) => {
     const [photographer, setphotographer] = useState({})
     useEffect(() => {
@@ -10,8 +11,9 @@ const PhotographerDetail = (props) => {
 
     return (
         <div>
-            <p>First Name: {photographer.firstName}</p>
-            <p>Last Name: {photographer.lastName}</p>
+            <p>First Name: {photographer.name}</p>
+            <PhotographerList photographer={photographer}/>
+
         </div>
     )
 }
