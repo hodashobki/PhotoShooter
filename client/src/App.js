@@ -16,7 +16,6 @@ import Logo from './components/Logo';
 function App() {
   return (
     <div className="App">
-      <Logo />
       <Header />
       <Router >
       <Main path ="/"/>
