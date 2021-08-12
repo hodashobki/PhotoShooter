@@ -29,7 +29,7 @@ const CreatComment = (props) => {
           })   
 
     }
-    // console.log(photo.photo.comments.text)
+    console.log(photo.photo)
 
     return (
         <div>
@@ -37,6 +37,7 @@ const CreatComment = (props) => {
 
             {photo.photo.comments.map((comment, idx)=>
                  <div style={{width:"100%", height:"80px" ,boxShadow:"rgba(0, 0, 0, 0.35) 0px 5px 15px"}} key={idx}>
+                     <p>{comment.user.name}</p>
                     <p>{comment.text}</p>
                 </div> 
                 

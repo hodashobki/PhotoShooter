@@ -14,7 +14,28 @@ module.exports.findAllPost= (req,res) =>{
 }
 
 module.exports.findonePhot=(req,res)=>{
-    Phot.findOne({_id:req.params.id}).populate('user').populate('comments')
+    // Phot.findOne({_id:req.params.id}).populate('user').populate('comments')
+    // .then(onesinglePhot=>res.json({photo:onesinglePhot}))
+    // .catch(err=>res.json({message: "Something went wrong", error: err}));
+
+
+
+    
+    // const photo = await Phot.findOne({_id:req.params.id})
+    
+    // await photo.populate('user').populate('comments').execPopulate()
+
+    // await photo.comments.populate('user').execPopulate()
+    
+    // res.json({photo:photo})
+
+    Phot.findOne({_id:req.params.id}).populate({
+        path: 'comments',
+        populate: { path: 'user' }
+    })
+    .populate({
+        path: 'user'
+    })
     .then(onesinglePhot=>res.json({photo:onesinglePhot}))
     .catch(err=>res.json({message: "Something went wrong", error: err}));
 };
