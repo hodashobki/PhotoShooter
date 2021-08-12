@@ -14,8 +14,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import photoo from '../images/photoo.jpg'
 
 const useStyles = makeStyles((theme) => ({
+
+
+  
     root: {
       display: 'flex',
       flexWrap: 'wrap',
@@ -44,26 +48,39 @@ const useStyles = makeStyles((theme) => ({
       height: 140,
     },
   }));
+
+  const style ={
+    lo:{
+        width: "300px",
+        hieght: "100px"
+    }
+}
+
   
 const PhotographerList = (props) => {
+
+  
  
 const classes = useStyles();
 const {photographer}=props;
 // console.log(photographer)
     return (
     <div>
+      <center>
       <Card className={classes.root1}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
           image="../images/photoo.jpg"
-          title="Photographer"
-        />
+          title="Photographer"> 
+            <img style= {style.lo} src={photoo} alt="PhotoShooter logo" />
+
+          </CardMedia>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {photographer.name}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textSecondary" component="p" >
             {photographer.address}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
@@ -75,14 +92,16 @@ const {photographer}=props;
       
       </CardActions>
     </Card>
-
+    </center>
+    <br></br>
+      <br></br>
       {/* ****** */}
-    
+      {/* style={{width:"426px",height:"640px"}} */}
    <div className={classes.root}>
       <ImageList className={classes.imageList} cols={2.5}>
         {photographer.photo.map((pho) => (
           <ImageListItem key={pho._id}>
-            <img src={pho.img} alt={pho.title} />
+            <img src={pho.img} alt={pho.title} /> 
             <ImageListItemBar
               title={pho.title}
               classes={{

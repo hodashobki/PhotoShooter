@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { useState } from "react"
+import { navigate } from '@reach/router';
+import Cookies from 'js-cookie'
 // import "./login.css"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
@@ -73,6 +75,7 @@ export default function Login({ setLoginUser }) {
     })
 
     const handleChange = e => {
+        e.preventDefault();
         const { name, value } = e.target
         setUser({
             ...user,
@@ -80,13 +83,17 @@ export default function Login({ setLoginUser }) {
         })
     }
 
-    const login = () => {
+    const login = (e) => {
+        e.preventDefault();
         axios.post("http://localhost:8000/api/login", user)
             .then(res => {
-                alert(res.data.message)
+                // alert(res.data.message)
+                Cookies.set('userId', res.data.user._id)
+
                 setLoginUser(res.data.user)
                 // history.push("/login")
-                history.push("/")
+                // history.push("/")
+                navigate("/homepage")
             })
     }
 
@@ -135,7 +142,7 @@ export default function Login({ setLoginUser }) {
                             control={<Checkbox value="remember" color="primary" />}
                             label="Remember me"
                         /> */}
-                        <Button
+                        {/* <Button
                             type="submit"
                             fullWidth
                             variant="contained"
@@ -144,7 +151,12 @@ export default function Login({ setLoginUser }) {
                             onClick={login}
                         >
                             Log In
-                        </Button>
+                        </Button> */}
+                        <Link  >
+
+                            <button type="submit" className="submit" onClick={(e) => login(e)}>LogIn</button>
+
+                        </Link>
                         <Grid container>
                             <Grid item xs>
                                 {/* <Link href="#" variant="body2">
@@ -152,9 +164,9 @@ export default function Login({ setLoginUser }) {
                                 </Link > */}
                             </Grid>
                             <Grid item >
-                            {/* onClick={() => history.push("/register") */}
-                                <Link href="/register" variant="body2" >
-                                {"Don't have an account? Register"}
+                                {/* onClick={() => history.push("/register") */}
+                                <Link onClick={() => navigate("/register")} variant="body2" >
+                                    {"Don't have an account? Register"}
                                 </Link>
                             </Grid>
                         </Grid>
