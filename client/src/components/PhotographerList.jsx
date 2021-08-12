@@ -63,7 +63,7 @@ const {photographer}=props;
           <Typography gutterBottom variant="h5" component="h2">
             {photographer.name}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textSecondary" component="p" >
             {photographer.address}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
