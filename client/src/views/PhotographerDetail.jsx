@@ -11,7 +11,7 @@ const PhotographerDetail = (props) => {
 
     return (
         <div>
-            <p>First Name: {photographer.name}</p>
+            {/* <p>First Name: {photographer.name}</p> */}
             <PhotographerList photographer={photographer}/>
 
         </div>

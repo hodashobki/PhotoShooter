@@ -1,4 +1,4 @@
-import {Router} from '@reach/router'
+import { Router } from '@reach/router'
 import './App.css';
 import Main from './views/Main'
 import Login from './components/sign/Login'
@@ -10,21 +10,25 @@ import PhotoDetails from './views/PhotoDetails'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Logo from './components/Logo';
-
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useState } from 'react';
+import HomePage from './views/HomePage';
 
 
 function App() {
+  const [user, setLoginUser] = useState({})
   return (
     <div className="App">
       <Header />
       <Router >
-      <Main path ="/"/>
-      <Login path = "/login"/>
-      <Register path = "/register"/>
-      <PhotoDetails path = "/photo/:id"/>   
-      <CreatePhoto path ="/createPhoto" />
-      <PhotographerDetail path= "/photographer/:id"/>
-      <Chat path= "/chat"/>
+        <Main path="/" />
+        {user && user._id ? <HomePage path="/homepage" setLoginUser={setLoginUser} /> : <Login path="/login" setLoginUser={setLoginUser} />}
+        <Login path="/login" setLoginUser={setLoginUser} />
+        <Register path="/register" />
+        <PhotoDetails path="/photo/:idp" />
+        <CreatePhoto path="/createPhoto/:idu" />
+        <PhotographerDetail path="/photographer/:id" />
+        <Chat path="/chat" />
 
       </Router>
       <Footer />
