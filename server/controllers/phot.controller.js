@@ -14,7 +14,7 @@ module.exports.findAllPost= (req,res) =>{
 }
 
 module.exports.findonePhot=(req,res)=>{
-    Phot.findOne({_id:req.params.id}).populate('user')
+    Phot.findOne({_id:req.params.id}).populate('user').populate('comments')
     .then(onesinglePhot=>res.json({photo:onesinglePhot}))
     .catch(err=>res.json({message: "Something went wrong", error: err}));
 };

@@ -1,18 +1,8 @@
 import { Box } from '@material-ui/core'
-import React,{useState,useEffect} from 'react'
-import axios from 'axios'
+
 
 const CommentsBox = (props) => {
-    const [photo, setPhoto] = useState([])
-
-    useEffect(() => {
-        axios.get("http://localhost:8000/api/phots/"+ props._id)
-        .then(res => {
-            setPhoto(res.data);
-        })
-        .catch(err => console.log(err));
-
-    }, []);
+const{photo}=props;
 
 
     return (
