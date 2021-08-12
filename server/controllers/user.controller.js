@@ -1,4 +1,7 @@
 const User = require("../models/user.model");
+const jwt = require("jsonwebtoken");
+const bcrypt = require('bcrypt');
+require("dotenv").config();
 
 module.exports.findAllUsers = (req, res) => {
   User.find()
