@@ -5,7 +5,7 @@ const PhotographerDetail = (props) => {
     const [photographer, setphotographer] = useState({})
     useEffect(() => {
         axios.get("http://localhost:8000/api/users/" + props.id)
-            .then(res =>setphotographer (res.data))
+            .then(res =>setphotographer (res.data.user))
     }, [])
 
 
