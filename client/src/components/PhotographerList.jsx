@@ -5,7 +5,16 @@ import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-// import itemData from './itemData';
+
+
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
 const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -16,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     },
     imageList: {
       flexWrap: 'nowrap',
+     
       // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
       transform: 'translateZ(0)',
     },
@@ -26,6 +36,13 @@ const useStyles = makeStyles((theme) => ({
       background:
         'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
     },
+    // ***
+    root1: {
+      maxWidth: 345,
+    },
+    media: {
+      height: 140,
+    },
   }));
   
 const PhotographerList = (props) => {
@@ -34,6 +51,32 @@ const classes = useStyles();
 const {photographer}=props;
 // console.log(photographer)
     return (
+    <div>
+      <Card className={classes.root1}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="../images/photoo.jpg"
+          title="Photographer"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            {photographer.name}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {photographer.address}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+          Equiped With Talent And Passion We gurantee that everything you Wish Is Materialized In Your Hands 
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+      
+      </CardActions>
+    </Card>
+
+      {/* ****** */}
     
    <div className={classes.root}>
       <ImageList className={classes.imageList} cols={2.5}>
@@ -55,7 +98,8 @@ const {photographer}=props;
           </ImageListItem>
         ))}
       </ImageList>
-    </div>    
+    </div>  
+    </div>  
   
 
   )
