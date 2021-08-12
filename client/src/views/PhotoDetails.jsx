@@ -6,6 +6,8 @@ const PhotoDetails = (props) => {
     const [photo, setPhoto] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
+  
+
     useEffect(() => {
         axios.get("http://localhost:8000/api/phots/"+ props.idp)
         .then(res => {
@@ -17,10 +19,12 @@ const PhotoDetails = (props) => {
     }, [props.idp]);
 
     return (
-        <div>
+        <div >
 
             {loaded && <CreateComment photo={photo}/>}
+            
         </div>
+        
     )
 }
 

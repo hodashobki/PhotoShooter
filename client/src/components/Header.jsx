@@ -81,7 +81,7 @@ export default function SearchAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="sticky" style = {{ backgroundImage: "linear-gradient(to right, #5fc3e4,#e55d87)", marginBottom:"10px" }}>
+      <AppBar position="sticky" style = {{ backgroundImage: "linear-gradient(to right, #5fc3e4,#e55d87)" }}>
         <Toolbar style = {{ display:"flex" , justifyContent: "space-between"}}>
           <Logo />
           <div style = {{ display:"flex" , justifyContent: "space-between"}}>

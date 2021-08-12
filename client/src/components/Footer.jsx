@@ -88,7 +88,7 @@ export default function SearchAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="sticky" style = {{marginTop:"10px", backgroundImage: "linear-gradient(to right, #232526,#414345)", marginTop: "auto", alignItems: "center"  }}>
+      <AppBar position="sticky" style = {{ backgroundImage: "linear-gradient(to right, #232526,#414345)", marginTop: "auto", alignItems: "center"  }}>
         <Toolbar style = {{alignItems: "center" }}>
           <div style = {{ width: "150px", display:"flex" ,justifyContent:"space-between" }}>
               <FacebookIcon onClick={facebook}/>
