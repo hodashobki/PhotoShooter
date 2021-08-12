@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
@@ -29,24 +29,25 @@ const useStyles = makeStyles((theme) => ({
   }));
   
 const PhotographerList = (props) => {
+ 
 const classes = useStyles();
 const {photographer}=props;
-
+// console.log(photographer)
     return (
     
    <div className={classes.root}>
       <ImageList className={classes.imageList} cols={2.5}>
-        {photographer.photo.map((person) => (
-          <ImageListItem key={person._id}>
-            <img src={person.img} alt={person.title} />
+        {photographer.photo.map((pho) => (
+          <ImageListItem key={pho._id}>
+            <img src={pho.img} alt={pho.title} />
             <ImageListItemBar
-              title={person.title}
+              title={pho.title}
               classes={{
                 root: classes.titleBar,
                 title: classes.title,
               }}
               actionIcon={
-                <IconButton aria-label={`star ${person.title}`}>
+                <IconButton aria-label={`star ${pho.title}`}>
                   <StarBorderIcon className={classes.title} />
                 </IconButton>
               }
