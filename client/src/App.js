@@ -1,4 +1,4 @@
-import {Router} from '@reach/router'
+// import {Router} from '@reach/router'
 import './App.css';
 import Main from './views/Main'
 import Login from './components/sign/Login'
@@ -10,6 +10,9 @@ import PhotoDetails from './views/PhotoDetails'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Logo from './components/Logo';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useState } from 'react';
+
 
 function App() {
   return (
