@@ -1,7 +1,6 @@
 import React from "react"
-import "./homepage.css"
 
-const Homepage = ({setLoginUser}) => {
+const HomePage = ({setLoginUser}) => {
     return (
         <div className="homepage">
             <h1>Hello Homepage</h1>
@@ -10,4 +9,4 @@ const Homepage = ({setLoginUser}) => {
     )
 }
 
-export default Homepage
+export default HomePage
