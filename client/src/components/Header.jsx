@@ -75,7 +75,14 @@ const login = (e) => {
   e.preventDefault();
   navigate("/login")
 }
-
+const chat=(e)=>{
+  e.preventDefault();
+  navigate("/join");
+}
+const postPhoto=(e)=>{
+  e.preventDefault();
+  navigate("/createPhoto/611681c52b69a24dd4edb3c5");
+}
 
 
 export default function SearchAppBar() {
@@ -98,6 +105,8 @@ export default function SearchAppBar() {
             <Button color="inherit" onClick={home}>Home</Button>
             <Button color="inherit" onClick={login}>Log in</Button>
             <Button color="inherit" onClick={logout}>Log out</Button>
+            <Button color="inherit" onClick={chat}>Start A Chat with Us</Button>
+            <Button color="inherit" onClick={postPhoto}>Post A Photo</Button>
 
 
 
