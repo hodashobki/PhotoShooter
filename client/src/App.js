@@ -14,6 +14,7 @@ import Logo from './components/Logo';
 import { useState } from 'react';
 import HomePage from './views/HomePage';
 import back from './images/back.jpeg'
+import CookieConsent from "react-cookie-consent" ;
 import backk from './images/backk.jpg'
 
 const style={
@@ -39,6 +40,7 @@ function App() {
 
       </Router>
       <Footer />
+      <CookieConsent > This webSite use cookies</CookieConsent>
     </div>
   );
 }
