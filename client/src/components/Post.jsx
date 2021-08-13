@@ -16,7 +16,7 @@ import useStyles from './styles.js';
 
 const AllPhoto = (props, setCurrentId) => {
     const classes = useStyles();
-    const { photo } = props;
+    const { photoo } = props;
     const [photo, setPhoto] = useState({
         title: "",
         img: "",

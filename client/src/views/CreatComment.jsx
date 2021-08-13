@@ -4,7 +4,7 @@ import { navigate, Link } from "@reach/router";
 import CommentForm from "../components/CommentForm";
 import { Box, Button } from "@material-ui/core";
 import Logo from "../components/Logo";
-import bbbb from "../images/bbbb.jpg";
+// import bbbb from "../images/bbbb.jpg";
 import Carousel from "react-material-ui-carousel";
 
 const CreatComment = (props) => {

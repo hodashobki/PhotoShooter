@@ -90,7 +90,8 @@ const PhotoCards = (props) => {
                   }
                
                   title={photo.title}
-                  subheader={photo.user.name}
+                  
+                //   subheader={photo.user.name}
                 />
                 {/* {"/edit/"+auth._id} */}
                 <Link to={"/photo/"+photo._id}><CardMedia
@@ -99,12 +100,17 @@ const PhotoCards = (props) => {
                   title="Paella dish"
                 >
                 </CardMedia></Link>
+                <Link to={"/photographer/"+photo.user._id}><CardContent>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                  {photo.user.name}
+                  </Typography>
+                </CardContent></Link>
                 
-                <CardContent>
+                {/* <CardContent>
                   <Typography variant="body2" color="textSecondary" component="p">
                    {photo.like}
                   </Typography>
-                </CardContent>
+                </CardContent> */}
                 <CardContent>
                   <Typography variant="body2" color="textSecondary" component="p">
                    {photo.desc}

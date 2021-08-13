@@ -12,7 +12,7 @@ import Post from "../components/Post"
 import { Grid, CircularProgress } from '@material-ui/core';
 import homeStyle from './homStyle.js';
 
-const HomePage = ({ setCurrentId }) => {
+const HomePage = ({ props,setCurrentId }) => {
     const [photo, setPhoto] = useState([]);
     // const {photos}=this.props;
     const { photos } = props;
