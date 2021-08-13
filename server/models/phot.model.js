@@ -25,6 +25,7 @@ const PhotSchema=new mongoose.Schema({
     like:{type:Number},
     // [{type:mongoose.Schema.Types.ObjectId, ref:'Message'}]
     comments:[{type:Schema.Types.ObjectId,ref:"Comment"}],
+    selectedFile: String,
 
 }, {timestamps: true});
 const Phot=mongoose.model("Phot",PhotSchema);
