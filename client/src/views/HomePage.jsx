@@ -1,4 +1,3 @@
-
 import CreatePhoto from "./CreatePhoto"
 import React, { useEffect, useState } from 'react';
 import { Link } from '@reach/router';

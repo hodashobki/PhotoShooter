@@ -1,37 +1,72 @@
-import React from 'react'
-import {useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
-import PlayersForm from './PlayersForm';
-import { navigate, Link } from '@reach/router';
-const CreatePlayer = (props) => {
-    const [error, setError]= useState([]);
-    const createPlayer = player => {
-        axios.post('http://localhost:8000/api/players/addplayer', player)
+import { useEffect} from 'react'
+import GamesTab from '../views/GamesTab'
+import CurrentStatusButtons from './CurrentStatusButtons';
+
+const PlayerStatus = (props) => {
+    const [players, setPlayers] = useState([]);
+    const [loaded, setLoaded] = useState(false);
+    useEffect(()=>{
+        axios.get('http://localhost:8000/api/players/list')
             .then(res=>{
-                navigate("/players/list");
-            })
-            .catch(err=>{
-              const errorResponse = err.response.data.errors; // Get the errors from err.response.data
-              const errorArr = []; // Define a temp error array to push the messages in
-              for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
-                  errorArr.push(errorResponse[key].message)
-              }
-              // Set Errors
-              setError(errorArr);
-          })       
-    }
+                setPlayers(res.data);
+                setLoaded(true);
+            });
+    },[]);
     return (
         <div>
-            <h3>
-                <Link to="/players/list">List</Link>
-                |
-                <Link to="/players/addplayer">Add Player</Link>
-            </h3>
+            <h2>Player Status - Game {props.id}</h2>
+            <GamesTab />
             <br></br>
-            <PlayersForm onSubmitProp={createPlayer}  name_error={error} />
+            {loaded && 
+
+                <table >
+                        <tr>
+                        <th>Team Name</th>
+                        <th>Actions</th>
+                        </tr>
+                        {players.map((player)=>{
+                        return <tr>
+                        <td>{player.name}</td>
+                        <td>
+                        <CurrentStatusButtons playerId={player._id} gameId={props.id} />
+                        </td>
+                        </tr>
+
+                        })}
+                </table>
+            
+            
+
+            
+            }
             
         </div>
+    //     const [photographer, setphotographer] = useState({})
+    //     const [isLoaded, setIsLoaded] = useState(false)
+    //     useEffect(() => {
+    //         console.log(props.id)
+    //         axios.get("http://localhost:8000/api/users/" + props.id)
+    //             .then(res => {
+    //                 console.log(res.data.user.photo)
+    //                 setphotographer (res.data.user);
+    //                 setIsLoaded(true);
+    //             })
+    //     }, [])
+    
+    
+    //     return (
+    //         <div>
+    //             {/* <p>First Name: {photographer.name}</p> */}
+    //             {isLoaded ? <PhotographerList photographer={photographer}/> : <p>loading...</p>}
+    
+    //         </div>
+    //     )
+    // }
+    
+    // export default PhotographerDetail
     )
 }
 
-export default CreatePlayer
+export default PlayerStatus
