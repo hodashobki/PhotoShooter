@@ -14,13 +14,15 @@ import homeStyle from './homStyle.js';
 
 const HomePage = ({ setCurrentId }) => {
     const [photo, setPhoto] = useState([]);
+    // const {photos}=this.props;
+    const { photos } = props;
     const classes = useStyles();
 
     console.log(photo);
     return (
-        !photo.length ? <CircularProgress /> : (
+        !photos.length ? <CircularProgress /> : (
             <Grid className={classes.container} container alignItems="stretch" spacing={3}>
-                {photo.map((Photo) => (
+                {photos.map((Photo) => (
                     <Grid key={photo._id} item xs={12} sm={6}>
                         <Post photo={photo} setCurrentId={setCurrentId} />
                     </Grid>
