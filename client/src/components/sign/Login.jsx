@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundImage: 'url(https://source.unsplash.com/random)',
         backgroundRepeat: 'no-repeat',
         backgroundColor:
-            theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+        theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
         backgroundSize: 'cover',
         backgroundPosition: 'center',
     },
@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+        // backgroundColor: darkBlue,
     },
 }));
 
@@ -152,9 +153,17 @@ export default function Login({ setLoginUser }) {
                         >
                             Log In
                         </Button> */}
+                        <br></br>   <br></br>   <br></br>   <br></br>   <br></br>
                         <Link  >
 
-                            <button type="submit" className="submit" onClick={(e) => login(e)}>LogIn</button>
+                            <button  fullWidth
+                            variant="contained"
+                            color="primary" 
+                            style ={{ margin: theme.spacing(3, 0, 2),
+                                backgroundColor: darkBlue,}} 
+                                className={classes.submit}
+                                type="submit" 
+                                 onClick={(e) => login(e)}>LogIn</button>
 
                         </Link>
                         <Grid container>
