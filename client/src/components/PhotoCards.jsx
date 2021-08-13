@@ -15,6 +15,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import CameraAltIcon from '@material-ui/icons/CameraAlt';
+import {navigate , Router, Link} from '@reach/router'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -51,7 +53,8 @@ const PhotoCards = (props) => {
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
-  
+
+
     return (
         <div>
             <div>
@@ -63,7 +66,7 @@ const PhotoCards = (props) => {
                 <CardHeader
                   avatar={
                     <Avatar aria-label="recipe" className={classes.avatar}>
-                      A
+                      <CameraAltIcon />
                     </Avatar>
                     
                   }
@@ -71,16 +74,23 @@ const PhotoCards = (props) => {
                     <IconButton aria-label="settings">
                       <MoreVertIcon />
                     </IconButton>
+                    
                   }
                   title={photo.title}
                   subheader={photo.user.name}
                 />
+        
+                
+                <Link to={`/photo/${photo._id}`} >
                 <CardMedia
                   className={classes.media}
                   image={photo.img}
-                  title="Paella dish"
+         
                 >
                 </CardMedia>
+                </Link>
+        
+ 
                 <CardContent>
                   <Typography variant="body2" color="textSecondary" component="p">
                    {photo.desc}
@@ -117,7 +127,6 @@ const PhotoCards = (props) => {
               </Card>
               
                );
-               
                
            })}
            <br></br>
