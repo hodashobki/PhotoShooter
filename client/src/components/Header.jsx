@@ -7,6 +7,7 @@ import { alpha, makeStyles,createTheme } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import Logo from './Logo';
 import Button from '@material-ui/core/Button'
+import axios from "axios"
 
 
 
@@ -76,17 +77,17 @@ const login = (e)=> {
 }
 
 
-  const logout = user => {
-    e.preventDefault();
-      axios.get('http://localhost:8000/api/logout', user)
-          .then(res => {
-              navigate("/login")
-          })
-  }
 
 export default function SearchAppBar() {
 
   const classes = useStyles();
+ 
+    const logout = user => {
+        axios.get('http://localhost:8000/api/logout', user)
+            .then(res => {
+                navigate("/login")
+            })
+    }
 
   return (
     <div className={classes.root}>
