@@ -3,7 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { navigate } from '@reach/router';
 import InputBase from '@material-ui/core/InputBase';
-import { alpha, makeStyles,createTheme } from '@material-ui/core/styles';
+import { alpha, makeStyles, createTheme } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import Logo from './Logo';
 import Button from '@material-ui/core/Button'
@@ -66,12 +66,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const home = (e)=> {
+const home = (e) => {
   e.preventDefault();
   navigate("/")
 }
 
-const login = (e)=> {
+const login = (e) => {
   e.preventDefault();
   navigate("/login")
 }
@@ -81,40 +81,40 @@ const login = (e)=> {
 export default function SearchAppBar() {
 
   const classes = useStyles();
- 
-    const logout = user => {
-        axios.get('http://localhost:8000/api/logout', user)
-            .then(res => {
-                navigate("/login")
-            })
-    }
+
+  const logout = user => {
+    axios.get('http://localhost:8000/api/logout', user)
+      .then(res => {
+        navigate("/login")
+      })
+  }
 
   return (
     <div className={classes.root}>
-      <AppBar position="sticky" style = {{ backgroundImage: "linear-gradient(to right, #5fc3e4,#e55d87)" }}>
-        <Toolbar style = {{ display:"flex" , justifyContent: "space-between"}}>
+      <AppBar position="sticky" style={{ backgroundImage: "linear-gradient(to right, #5fc3e4,#e55d87)" }}>
+        <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <Logo />
-          <div style = {{ display:"flex" , justifyContent: "space-between"}}>
-          <Button color="inherit" onClick={home}>Home</Button>
-          <Button color="inherit" onClick={login}>Log in</Button>
-          <Button color="inherit"onClick={logout}>Log out</Button>
-          
-          
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <Button color="inherit" onClick={home}>Home</Button>
+            <Button color="inherit" onClick={login}>Log in</Button>
+            <Button color="inherit" onClick={logout}>Log out</Button>
 
 
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+
+
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+              />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
           </div>
 
         </Toolbar>
