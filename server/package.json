@@ -15,10 +15,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-<<<<<<< HEAD
-=======
     "js-cookie": "^3.0.0",
->>>>>>> c2c374043d62520d7248a73d6e5d4ec961e3fdc1
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.6",
     "socket.io": "^4.1.3"

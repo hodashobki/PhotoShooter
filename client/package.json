@@ -15,17 +15,16 @@
     "dotenv": "^10.0.0",
     "i": "^0.3.6",
     "install": "^0.13.0",
-<<<<<<< HEAD
-    "npm": "^7.20.6",
-=======
     "js-cookie": "^3.0.0",
-    "npm": "^7.20.5",
->>>>>>> c2c374043d62520d7248a73d6e5d4ec961e3fdc1
+    "js-cookies": "^1.0.4",
+    "npm": "^7.20.6",
     "query-string": "^7.0.1",
     "react": "^17.0.2",
     "react-cookie": "^4.1.1",
+    "react-cookie-consent": "^6.3.0",
     "react-dom": "^17.0.2",
     "react-emoji": "^0.5.0",
+    "react-file-base64": "^1.0.3",
     "react-material-ui-carousel": "^2.2.7",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
