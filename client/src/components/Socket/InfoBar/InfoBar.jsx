@@ -15,7 +15,7 @@ const InfoBar = (props) => {
           <h3>{room}</h3>
         </div>
         <div className="rightInnerContainer">
-            <Link to="/join"><img src={closeIcon} alt="close icon" /></Link>
+            <Link to="/"><img src={closeIcon} alt="close icon" /></Link>
           {/* <a href="/"><img src={closeIcon} alt="close icon" /></a> */}
         </div>
       </div>

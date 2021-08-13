@@ -16,10 +16,10 @@ import useStyles from './styles.js';
 
 const AllPhoto = (props, setCurrentId) => {
     const classes = useStyles();
-
+    const { photoo } = props;
     const [photo, setPhoto] = useState({
         title: "",
-        img : "",
+        img: "",
         desc: "",
         selectedFile: "",
     });
@@ -92,7 +92,8 @@ const AllPhoto = (props, setCurrentId) => {
     return (
         // <h1>All Photo:</h1>
         <Card className={classes.card}>
-            <CardMedia className={classes.media} image={photo.selectedFile} />
+            <CardMedia className={classes.media} image={photo.image} />
+            {/* image={photo.selectedFile} */}
 
             {/* image={phot.selectedFile} title={phot.title} */}
             {/* {
@@ -121,9 +122,14 @@ const AllPhoto = (props, setCurrentId) => {
             <Typography className={classes.title} variant="subtitle1" gutterBottom>
                 {photo.title}
             </Typography>
-            <CardContent>
+            {/* <CardContent>
                 <Typography variant="body2" color="textSecondary">
                     {photo.desc}
+                </Typography>
+            </CardContent> */}
+            <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                    {photo.like}
                 </Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
