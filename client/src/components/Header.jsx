@@ -74,6 +74,11 @@ const login = (e)=> {
   e.preventDefault();
   navigate("/login")
 }
+const logout =(e , {setLoginUser}) =>{
+  e.preventDefault();
+  navigate("/login")
+
+}
 
 export default function SearchAppBar() {
 
@@ -86,7 +91,9 @@ export default function SearchAppBar() {
           <Logo />
           <div style = {{ display:"flex" , justifyContent: "space-between"}}>
           <Button color="inherit" onClick={home}>Home</Button>
-          <Button color="inherit" onClick={login}>Sign in</Button>
+          <Button color="inherit" onClick={login}>Log in</Button>
+          <Button color="inherit"onClick={() => setLoginUser({})}>Log out</Button>
+          
           
 
 
