@@ -159,8 +159,8 @@ export default function Login({ setLoginUser }) {
                             <button  fullWidth
                             variant="contained"
                             color="primary" 
-                            style ={{ margin: theme.spacing(3, 0, 2),
-                                backgroundColor: darkBlue,}} 
+                            style ={{ margin: "theme".spacing(3, 0, 2),
+                                backgroundColor: "darkBlue"}} 
                                 className={classes.submit}
                                 type="submit" 
                                  onClick={(e) => login(e)}>LogIn</button>

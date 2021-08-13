@@ -1,4 +1,5 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
+import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -44,6 +45,8 @@ const useStyles = makeStyles((theme) => ({
 const PhotoCards = (props) => {
    
     const {photos}=props;
+    const [like,setLikes]=useState(0);
+    const [photoo,setPhotoo]=useState({});
    
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
@@ -51,7 +54,19 @@ const PhotoCards = (props) => {
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
-  
+
+  const addToLikes=(id)=>{
+    //  var likedphoto=photos.filter(photo=>photo._id===id)
+    //    setPhotoo(likedphoto[0]);
+    //   photoo.like=0;
+    //   axios.put("http://localhost:8000/api/update/"+id,photos)
+    //   .then(res=>{})
+    let increment=like+1;
+            
+          setLikes(increment);
+        
+ 
+  }
     return (
         <div>
             <div>
@@ -72,6 +87,7 @@ const PhotoCards = (props) => {
                       <MoreVertIcon />
                     </IconButton>
                   }
+               
                   title={photo.title}
                   subheader={photo.user.name}
                 />
@@ -83,16 +99,20 @@ const PhotoCards = (props) => {
                 </CardMedia>
                 <CardContent>
                   <Typography variant="body2" color="textSecondary" component="p">
+                   {photo.like}
+                  </Typography>
+                </CardContent>
+                <CardContent>
+                  <Typography variant="body2" color="textSecondary" component="p">
                    {photo.desc}
                   </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
-                  <IconButton aria-label="add to favorites">
+                  <IconButton aria-label="add to favorites"
+                   onClick={(e)=>{addToLikes(photo._id)}}>
                     <FavoriteIcon />
                   </IconButton>
-                  {/* <IconButton aria-label="share">
-                    <ShareIcon />
-                  </IconButton> */}
+                
                   <IconButton
                     className={clsx(classes.expand, {
                       [classes.expandOpen]: expanded,
@@ -106,13 +126,10 @@ const PhotoCards = (props) => {
                 </CardActions>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                   <CardContent>
-                    
                     <Typography paragraph>
                      {photo.desc}
                     </Typography>
-                    
-                    
-                  </CardContent>
+                    </CardContent>
                 </Collapse>
               </Card>
               
