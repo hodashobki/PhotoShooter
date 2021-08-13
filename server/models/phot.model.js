@@ -22,9 +22,13 @@ const PhotSchema=new mongoose.Schema({
         required:[true,"This field must not be Empty"],
         minlength: [3, "Title must be at least 3 characters long"],
     },
-    like:{type:Number},
+    like:{
+        type:Number ,
+        default: 0
+    },
     // [{type:mongoose.Schema.Types.ObjectId, ref:'Message'}]
     comments:[{type:Schema.Types.ObjectId,ref:"Comment"}],
+    selectedFile: String,
 
 }, {timestamps: true});
 const Phot=mongoose.model("Phot",PhotSchema);

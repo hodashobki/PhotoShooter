@@ -14,12 +14,20 @@ import Logo from './components/Logo';
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from 'react';
 import HomePage from './views/HomePage';
+import back from './images/back.jpeg'
+import CookieConsent from "react-cookie-consent" ;
+import backk from './images/backk.jpg'
 
+const style={
+  back :{
+      backgroundImage: "url(" + back + ")",
+  }
+}
 
 function App() {
   const [user, setLoginUser] = useState({})
   return (
-    <div className="App">
+    <div className="App" style= {style.back}>
       <Header />
       <Router >
         <Main path="/" />
@@ -34,6 +42,7 @@ function App() {
 
       </Router>
       <Footer />
+      <CookieConsent > This webSite use cookies</CookieConsent>
     </div>
   );
 }

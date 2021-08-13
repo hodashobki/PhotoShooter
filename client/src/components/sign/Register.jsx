@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import React, { useState } from "react"
+import { navigate } from '@reach/router';
 // import "./register.css"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
@@ -50,44 +51,55 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Register()  {
+export default function Register() {
     const classes = useStyles();
     // const Register = () => {
 
-        const history = useHistory()
-    
-        const [ user, setUser] = useState({
-            name: "",
-            email:"",
-            address:"", //lname=address
-            password:"",
-            reEnterPassword: ""
-        })
-    
-        const handleChange = e => {
-            const { name, value } = e.target
-            setUser({
-                ...user,
-                [name]: value
-            })
-        }
-    
-        const register = () => {
-            const { name, email, address , password, reEnterPassword } = user
-            if( name && address && email && password && (password === reEnterPassword)){
-                axios.post("http://localhost:8000/api/register", user)
-                .then( res => {
-                    alert(res.data.message)
-                    history.push("/login")
-                    // history.push("/login")
+    const history = useHistory()
 
-                })
-                
-            } else {
-                alert("invlid input")
-            }
-            
-        }
+    const [user, setUser] = useState({
+        name: "", //fname=name
+        email: "",
+        address: "", //lname=address
+        password: "",
+        confirmPassword: ""
+    })
+
+    const handleChange = e => {
+        e.preventDefault();
+        const { name, value } = e.target
+        setUser({
+            ...user,
+            [name]: value
+        })
+    }
+
+    const register = (e) => {
+        e.preventDefault();
+        // const { name, address, email, password, reEnterPassword } = user
+        // if (name && address && email && password && (password === reEnterPassword)) {
+        axios.post("http://localhost:8000/api/register", user)
+            .then(res => {
+                console.log("asd")
+                // alert(res.data.message)
+                // history.push("/login")
+
+                // history.push("/login")
+
+            })
+            .then(navigate("/login"))
+            .catch(err => console.log(err))
+        // .catch(alert("invlid input"))
+
+    }
+    // } else {
+    //     alert("invlid input")
+    // }
+
+    // const already=() =>{
+    //     history.push("/login")
+
+    // }
 
     return (
         <Container component="main" maxWidth="xs">
@@ -99,20 +111,19 @@ export default function Register()  {
                 <Typography component="h1" variant="h5">
                     Register
                 </Typography>
-                {console.log("User", user)}
                 <form className={classes.form} noValidate>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 autoComplete="name"
-                                name="firstName"
+                                name="name"
                                 variant="outlined"
                                 required
                                 fullWidth
                                 id="firstName"
                                 value={user.name}
                                 placeholder="Your Name"
-                                onChange={ handleChange }
+                                onChange={handleChange}
                                 label="Your Name"
                                 autoFocus
                             />
@@ -124,11 +135,11 @@ export default function Register()  {
                                 fullWidth
                                 id="lastName"
                                 label="Your address"
-                                name="lastName"
+                                name="address"
                                 autoComplete="address"
                                 value={user.address}
-                                placeholder="Your address" 
-                                onChange={ handleChange }
+                                placeholder="Your address"
+                                onChange={handleChange}
                             />
                         </Grid>
                         {/* <Grid item xs={12} sm={6}>
@@ -151,8 +162,8 @@ export default function Register()  {
                                 label="Email Address"
                                 name="email"
                                 value={user.email}
-                                 placeholder="Your Email"
-                                 onChange={ handleChange }
+                                placeholder="Your Email"
+                                onChange={handleChange}
                                 autoComplete="email"
                             />
                         </Grid>
@@ -182,12 +193,27 @@ export default function Register()  {
                                 type="password"
                                 id="password"
                                 value={user.password}
-                                 placeholder="Your Password"
-                                  onChange={ handleChange }
+                                placeholder="Your Password"
+                                onChange={handleChange}
                                 autoComplete="current-password"
                             />
                         </Grid>
-                        
+                        <Grid item xs={12}>
+                            <TextField
+                                variant="outlined"
+                                required
+                                fullWidth
+                                name="confirmPassword"
+                                label="confirm Password"
+                                type="password"
+                                id="password"
+                                value={user.confirmPassword}
+                                placeholder="confirm Password"
+                                onChange={handleChange}
+                                autoComplete="confirmPassword"
+                            />
+                        </Grid>
+
                         {/* <Grid item xs={12}>
                             <FormControlLabel
                                 control={<Checkbox value="allowExtraEmails" color="primary" />}
@@ -195,7 +221,12 @@ export default function Register()  {
                             />
                         </Grid> */}
                     </Grid>
-                    <Button
+                    <Link  >
+
+                        <input type="submit" className="submit" value="register" onClick={(e) => register(e)} />
+                    </Link>
+                </form>
+                {/* <Button
                         type="submit"
                         fullWidth
                         variant="contained"
@@ -204,15 +235,15 @@ export default function Register()  {
                         onClick={register}
                     >
                         Register
-                    </Button>
-                    <Grid container justifyContent="flex-end">
-                        <Grid item>
-                            <Link href="/login" variant="body2">
-                                Already have an account? Log In
-                            </Link>
-                        </Grid>
+                    </Button> */}
+                <Grid container justifyContent="flex-end">
+                    <Grid item>
+                        <Link onClick={() => navigate("/login")} variant="body2">
+                            Already have an account? Log In
+                        </Link>
                     </Grid>
-                </form>
+                </Grid>
+
             </div>
             <Box mt={5}>
                 <Copyright />
