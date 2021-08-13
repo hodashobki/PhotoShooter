@@ -1,4 +1,5 @@
 import React from 'react'
+
 import ScrollToBottom from 'react-scroll-to-bottom';
 
 import Message from './Message/Message';
@@ -6,15 +7,15 @@ import Message from './Message/Message';
 import './Messages.css';
 
 const Messages = (props) => {
-    const { messages, name }=props
+     const { messages, name }=props
 
-    let isSentByCurrentUser = false;
+    // let isSentByCurrentUser = false;
 
-    const trimmedName = name.trim().toLowerCase();
+    // const trimmedName = name.trim().toLowerCase();
   
-    if(user === trimmedName) {
-      isSentByCurrentUser = true;
-    }
+    // if(user === trimmedName) {
+    //   isSentByCurrentUser = true;
+    // }
 
     return (
         <ScrollToBottom className="messages">

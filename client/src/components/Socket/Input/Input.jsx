@@ -4,7 +4,7 @@ import './Input.css';
 const Input = (props) => {
     const { setMessage, sendMessage, message }=props;
     return (
-        <form  onSubmit={ sendMessage} className="form">
+        <form className="form">
         <input
           className="input"
           type="text"

@@ -1,19 +1,14 @@
 import React from 'react'
 import {useState } from 'react'
 import axios from 'axios';
+import PlayersForm from './PlayersForm';
 import { navigate, Link } from '@reach/router';
-import PhotoForm from "../components/PhotoForm";
-
-const CreatePhoto = (props) => {
-
+const CreatePlayer = (props) => {
     const [error, setError]= useState([]);
-    // const [photo, setPhoto] = useState([]);
-    const {idu}=props;
-    const createPhoto = photo => {
-        axios.post('http://localhost:8000/api/phots/new/'+idu,photo)
+    const createPlayer = player => {
+        axios.post('http://localhost:8000/api/players/addplayer', player)
             .then(res=>{
-            //    setPhoto([...photo,res.data])
-                navigate("/");//This will navigate user to the main page,where he will see his photo
+                navigate("/players/list");
             })
             .catch(err=>{
               const errorResponse = err.response.data.errors; // Get the errors from err.response.data
@@ -25,13 +20,18 @@ const CreatePhoto = (props) => {
               setError(errorArr);
           })       
     }
-
     return (
         <div>
-            <h1>Share with us your Photo</h1>
-            <PhotoForm onSubmitProp={createPhoto}  photo_error={error}/>
+            <h3>
+                <Link to="/players/list">List</Link>
+                |
+                <Link to="/players/addplayer">Add Player</Link>
+            </h3>
+            <br></br>
+            <PlayersForm onSubmitProp={createPlayer}  name_error={error} />
+            
         </div>
     )
 }
 
-export default CreatePhoto
+export default CreatePlayer

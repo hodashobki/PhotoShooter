@@ -1,25 +1,21 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { TextField, Button, Typography } from '@material-ui/core';
+import { TextField,Typography } from '@material-ui/core';
 import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import FileBase64 from 'react-file-base64';
-// // import useStyles from './styles.js';
-// import { useDispatch } from 'react-redux';
-//  import { createPost, updatePost } from '../../actions/posts.js';
-//import { useSelector } from 'react-redux';
 
 import {
-    // Paper,
+     Paper,
     FormControl,
     InputLabel,
     OutlinedInput,
-    // Button
+     Button
 } from '@material-ui/core';
+import { navigate } from '@reach/router';
 const styles = {
     paper: {
         width: "50rem", padding: "1rem"
@@ -42,13 +38,13 @@ const PhotoForm = (props) => {
     const [imgerror, setimgerror] = useState("");
     const [titleerror, setTittleError] = useState("");
     const [like, setLike] = useState(0);
-    const [postData, setPostData] = useState({
-        user: '',
-        title: '',
-        desc: '',
-        like: '',
-        selectedFile: ''
-    });
+    // const [postData, setPostData] = useState({
+    //     user: '',
+    //     title: '',
+    //     desc: '',
+    //     like: '',
+    //     selectedFile: ''
+    // });
 
 
     // (value===""
@@ -102,47 +98,15 @@ const PhotoForm = (props) => {
             setImg("");
             setDesc("");
         }
-
+        // else {
+        //     alert("You can not submit");
+        // }
     }
-    //ayat work
-    // const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null); 
-    // const dispatch = useDispatch();
-
-
-
-    // useEffect(() => {
-    //     if(post) setPostData(post);
-    // }, [post]);
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-
-    //     if(currentId)
-    //     {
-    //         dispatch(updatePost(currentId, postData));
-    //     }
-    //     else
-    //     {
-    //         dispatch(createPost(postData));
-    //     }
-    //     clear();
-    // }
-
-    // const clear = () => {
-    //     setCurrentId(null);
-
-    //     setPostData({ 
-    //         user: '',
-    //         title: '',
-    //         desc: '',
-    //         like :'',
-    //         selectedFile: ''
-    //     });
-
-    // }
+   
 
     return (
-        <div>
+        <div style={{alignItems:"left",display: "flex",
+        alignItems: "center"}}>
             {photo_error.map((err, index) => <p key={index}>{err}</p>)}
             <Paper elevation={3} style={styles.paper}>   {/* className={classes.paper} */}
                 <h3>Create your album</h3>
@@ -162,19 +126,19 @@ const PhotoForm = (props) => {
                         {imgerror && <p style={{ color: "red" }}>{imgerror}</p>}
                     </FormControl>
                     <br></br>
-                    <div >
+                    {/* <div >
                         <FileBase64
                             type="file"
                             multiple={false}
                             onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} />
-                    </div>
-                    <br></br>
+                    </div> */}
+                    
                     <FormControl variant="outlined" style={styles.input}>
                         <InputLabel>Describe the Photo</InputLabel>
                         <OutlinedInput type="text" onChange={(e) => descValidation(e.target.value)} value={desc} />
                         {descerror && <p style={{ color: "red" }}>{descerror}</p>}
                     </FormControl>
-                    <TextField name="tags" variant="outlined" label="Tags" fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} />
+                    {/* <TextField name="tags" variant="outlined" label="Tags" fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} /> */}
 
                     <br></br>
                     <Button type="submit" variant="contained" color="primary">
