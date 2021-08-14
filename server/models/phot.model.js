@@ -1,7 +1,7 @@
 const mongoose=require("mongoose");
 Schema = mongoose.Schema;
  require("./user.model");
-require("./comments.model");
+require("./coment.model");
 
 const PhotSchema=new mongoose.Schema({
     
@@ -22,9 +22,13 @@ const PhotSchema=new mongoose.Schema({
         required:[true,"This field must not be Empty"],
         minlength: [3, "Title must be at least 3 characters long"],
     },
-    like:{type:Number},
+    like:{
+        type:Number ,
+        default: 0
+    },
     // [{type:mongoose.Schema.Types.ObjectId, ref:'Message'}]
-    comments:[{type:Schema.Types.ObjectId,ref:"Comment"}],
+    comments:[{type:Schema.Types.ObjectId,ref:"CommentPlus"}],
+    
 
 }, {timestamps: true});
 const Phot=mongoose.model("Phot",PhotSchema);

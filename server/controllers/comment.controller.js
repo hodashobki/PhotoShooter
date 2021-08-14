@@ -18,22 +18,23 @@ try{
     const user=await User.findOne({_id:req.params.idu})
     const photo=await Phot.findOne({_id:req.params.idp})
     const comment=await Comment.create({text,user:req.params.idu})
+    // const comment=await Comment.create({text})
     console.log({text});
     if(!comment){
         console.log(User);
         res.status(400).json({message:"something is wrong"})
     }
-    const finaluser=await User.findOneAndUpdate({_id: req.params.idu},{
+    const finalohoto=await Phot.findOneAndUpdate({_id: req.params.idp},{
         $push:{comments:comment}
     })
      
     console.log(comment)
 
-    res.json(finaluser);
+    res.json(finalohoto);
 
 }
 catch(err){
-    console.log(err);
+    res.status(400).json(err)
 }
 }
 module.exports.findOneComment=(req,res)=>{

@@ -14,7 +14,28 @@ module.exports.findAllPost= (req,res) =>{
 }
 
 module.exports.findonePhot=(req,res)=>{
-    Phot.findOne({_id:req.params.id}).populate('user')
+    // Phot.findOne({_id:req.params.id}).populate('user').populate('comments')
+    // .then(onesinglePhot=>res.json({photo:onesinglePhot}))
+    // .catch(err=>res.json({message: "Something went wrong", error: err}));
+
+
+
+    
+    // const photo = await Phot.findOne({_id:req.params.id})
+    
+    // await photo.populate('user').populate('comments').execPopulate()
+
+    // await photo.comments.populate('user').execPopulate()
+    
+    // res.json({photo:photo})
+
+    Phot.findOne({_id:req.params.id}).populate({
+        path: 'comments',
+        populate: { path: 'user' }
+    })
+    .populate({
+        path: 'user'
+    })
     .then(onesinglePhot=>res.json({photo:onesinglePhot}))
     .catch(err=>res.json({message: "Something went wrong", error: err}));
 };
@@ -45,6 +66,7 @@ module.exports.creatNewPhot = async (req, res) => {
         res.json(finalUser);
     }catch(err){
         console.log(err)
+        // res.status(400).json(err)
     }
     }
  
@@ -54,9 +76,12 @@ module.exports.creatNewPhot = async (req, res) => {
 //     .catch(err => res.status(400).json({ message: "Something went wrong", error: err }));
 // };
  module.exports.updateExistingPhot=(req,res)=>{
+     console.log(req.body)
    
      Phot.findOneAndUpdate({_id:req.params.id},req.body,{new:true})
-     .then(updatePhot=>res.json({phot:updatePhot}))
+     .then(updatePhot=>{res.json({phot:updatePhot}),
+      console.log(" i am in then backend ")
+    })
      .catch(err => res.json({ message: "Something went wrong", error: err }));
  };
 
