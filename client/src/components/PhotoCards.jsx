@@ -98,16 +98,19 @@ const PhotoCards = (props) => {
                 />
         
                 
-                <Link to={`/photo/${photo._id}`} >
-                <CardMedia
+                <Link to={"/photo/"+photo._id}><CardMedia
                   className={classes.media}
                   image={photo.img}
-         
+                  title="Paella dish"
                 >
-                </CardMedia>
-                </Link>
-        
- 
+                </CardMedia></Link>
+                <Link to={"/photographer/"+photo.user._id}><CardContent>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                  {photo.user.name}
+                  </Typography>
+                </CardContent></Link>
+
+
                 <CardContent>
                   <Typography variant="body2" color="textSecondary" component="p">
                    {photo.desc}
