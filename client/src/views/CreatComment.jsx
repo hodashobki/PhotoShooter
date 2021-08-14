@@ -16,7 +16,7 @@ const CreatComment = (props) => {
     axios
       .post("http://localhost:8000/api/comment/new/" + idu + "/" + idp, comment)
       .then((res) => {
-        // navigate("/"); //navigate to the page where the photo is displayed
+        // navigate("/"); //navigate to the show comments page
       })
       .catch((err) => {
         const errorResponse = err.response.data.errors; // Get the errors from err.response.data

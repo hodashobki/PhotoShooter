@@ -61,14 +61,12 @@ const PhotoCards = (props) => {
   const addToLikes=(id)=>{
     //  var likedphoto=photos.filter(photo=>photo._id===id)
     //    setPhotoo(likedphoto[0]);
-    //   photoo.like=0;
+    //   photo.like + =1 ;
     //   axios.put("http://localhost:8000/api/update/"+id,photos)
     //   .then(res=>{})
-    let increment=like+1;
-            
-          setLikes(increment);
-        
- 
+   
+             setLikes(like);
+
   }
     return (
         <div>
