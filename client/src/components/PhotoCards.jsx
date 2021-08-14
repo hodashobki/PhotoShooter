@@ -52,20 +52,28 @@ const PhotoCards = (props) => {
    
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-  
+   const [newphot,setPhot]=useState({});
+
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
 
 
   const addToLikes=(id)=>{
-    //  var likedphoto=photos.filter(photo=>photo._id===id)
-    //    setPhotoo(likedphoto[0]);
+     var likedphoto=photos.filter(photo=>photo._id===id)
+       setPhotoo(likedphoto[0]);
+    var user = likedphoto[0].user;
+    var desc=  likedphoto[0].desc;
+    var img = likedphoto[0].img;
+    var title= likedphoto[0].title;
+    var like= likedphoto[0].like +1
+    var comments= likedphoto[0].comments
+    setPhot({user, desc, img, title, like, comments })
     //   photo.like + =1 ;
-    //   axios.put("http://localhost:8000/api/update/"+id,photos)
-    //   .then(res=>{})
+      axios.put("http://localhost:8000/api/update/"+id,newphot)
+      .then(res=>{})
    
-             setLikes(like);
+            //  setLikes(like);
 
   }
     return (
@@ -112,6 +120,11 @@ const PhotoCards = (props) => {
                 <CardContent>
                   <Typography variant="body2" color="textSecondary" component="p">
                    {photo.desc}
+                  </Typography>
+                </CardContent>
+                <CardContent>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                   {photo.like}
                   </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
