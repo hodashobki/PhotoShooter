@@ -1,5 +1,5 @@
-const CommentPluss=require("../controllers/commentplus.controller");
+const CommentPlus=require("../controllers/commentplus.controller");
 
 module.exports=app=>{
-    app.exports("/api/comment/:idp",CommentPluss.createCommentPlus);
+    app.post("/api/comment/:id",CommentPlus.createCommentPlus);
 }

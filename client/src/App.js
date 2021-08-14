@@ -16,6 +16,7 @@ import { useState } from 'react';
 import HomePage from './views/HomePage';
 import back from './images/back.jpeg'
 import CookieConsent from "react-cookie-consent" ;
+import CreatComment from './views/CreatComment';
 
 const style={
   back :{
@@ -41,6 +42,7 @@ function App() {
         <Register path="/register" />
         <PhotoDetails path="/photo/:idp" />
         <CreatePhoto path="/createPhoto/:idu" />
+        <CreatComment path="/comment/:idp"/>
         <PhotographerDetail path="/photographer/:id" />
         <Join path="/join"/>
         <Chat path="/chat/:name/:room" />

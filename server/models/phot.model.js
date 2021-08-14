@@ -1,7 +1,7 @@
 const mongoose=require("mongoose");
 Schema = mongoose.Schema;
  require("./user.model");
-require("./comments.model");
+require("./coment.model");
 
 const PhotSchema=new mongoose.Schema({
     
@@ -27,7 +27,7 @@ const PhotSchema=new mongoose.Schema({
         default: 0
     },
     // [{type:mongoose.Schema.Types.ObjectId, ref:'Message'}]
-    comments:[{type:Schema.Types.ObjectId,ref:"Comment"}],
+    comments:[{type:Schema.Types.ObjectId,ref:"CommentPlus"}],
     selectedFile:
     {        type : String
     }, 

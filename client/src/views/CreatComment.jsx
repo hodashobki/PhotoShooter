@@ -3,20 +3,18 @@ import axios from "axios";
 import { navigate, Link } from "@reach/router";
 import CommentForm from "../components/CommentForm";
 import { Box, Button } from "@material-ui/core";
-import Logo from "../components/Logo";
-// import bbbb from "../images/bbbb.jpg";
 import Carousel from "react-material-ui-carousel";
 
 const CreatComment = (props) => {
-  const { idu, idp, photo } = props;
+  const {id, photo } = props;
 
   // console.log("look here",photo.photo.comments);
   const [error, setError] = useState([]);
   const createComments = (comment) => {
-    axios
-      .post("http://localhost:8000/api/comment/new/" + idu + "/" + idp, comment)
+    console.log(comment)
+    axios.post("http://localhost:8000/api/comment/" + id, comment)
       .then((res) => {
-        // navigate("/"); //navigate to the show comments page
+        navigate("/photo/"+id); //navigate to the show comments page
       })
       .catch((err) => {
         const errorResponse = err.response.data.errors; // Get the errors from err.response.data
@@ -41,8 +39,16 @@ const CreatComment = (props) => {
   justifyContent: "space-between"}}>
           <h2>Comments:</h2>
         <Carousel interval={3500}>
+        {photo.photo.comments.map((item)=>{
+          return (
+            <div> <p><span>{item.person} said:</span>{item.com}</p>
+           
+            </div>
+           
+          );
+        })}
           
-          {photo.photo.comments.map((comment, idx) => (
+          {/* {photo.photo.comments.map((comment, idx) => (
             <div
               style={{
                 backgroundImage: "linear-gradient(to right, #232526 ,#414345)",
@@ -58,7 +64,7 @@ const CreatComment = (props) => {
               <br></br>
               <p>{comment.text}</p>
             </div>
-          ))}
+          ))} */}
         </Carousel>
         <div style={{ width: "100%", backgroundColor: "white" }}>
           <CommentForm onSubmitProp={createComments} text_error={error} />
