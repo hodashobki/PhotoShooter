@@ -144,7 +144,6 @@ export default function Login({ setLoginUser }) {
                         </Button> */}
                         <br></br>   <br></br>   <br></br>    
                         <Link  >
-<<<<<<< HEAD
                             <button  fullWidth
                             variant="contained"
                             color="primary" 
@@ -152,16 +151,6 @@ export default function Login({ setLoginUser }) {
                                 className={classes.submit}
                                 type="submit" 
                                  onClick={(e) => login(e)}>Login</button>
-=======
-
-                            <button fullWidth
-                                variant="contained"
-                                color="primary"
-
-                                className={classes.submit}
-                                type="submit"
-                                onClick={(e) => login(e)}>LogIn</button>
->>>>>>> 8ea848209240fe7dd71eea6c480269a765da4a99
 
                         </Link>
                         <Grid container>
