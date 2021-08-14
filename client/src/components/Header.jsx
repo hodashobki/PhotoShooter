@@ -105,10 +105,15 @@ export default function SearchAppBar() {
           <Logo />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Button color="inherit" onClick={home}>Home</Button>
+            {Cookies.get('userId')=== undefined?
             <Button color="inherit" onClick={login}>Log in</Button>
+            :
+            
+          <>
             <Button color="inherit" onClick={logout}>Log out</Button>
+            <Button color="inherit" onClick={postPhoto}>Post A Photo</Button></>
+          }
             <Button color="inherit" onClick={chat}>Start A Chat with Us</Button>
-            <Button color="inherit" onClick={postPhoto}>Post A Photo</Button>
 
 
 

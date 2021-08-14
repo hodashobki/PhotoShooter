@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import FileBase64 from 'react-file-base64';
+import Cookies from 'js-cookie';
 
 import {
      Paper,
@@ -16,6 +17,7 @@ import {
      Button
 } from '@material-ui/core';
 import { navigate } from '@reach/router';
+import { Redirect } from '@reach/router';
 const styles = {
     paper: {
         width: "50rem", padding: "1rem"
@@ -105,8 +107,12 @@ const PhotoForm = (props) => {
    
 
     return (
+
+    
+        
         <div style={{alignItems:"left",display: "flex",
         alignItems: "center"}}>
+
             {photo_error.map((err, index) => <p key={index}>{err}</p>)}
             <Paper elevation={3} style={styles.paper}>   {/* className={classes.paper} */}
                 <h3>Create your album</h3>
@@ -149,6 +155,7 @@ const PhotoForm = (props) => {
                 </form>
             </Paper>
         </div>
+
     )
 }
 

@@ -3,7 +3,8 @@ import {useState } from 'react'
 import axios from 'axios';
 import { navigate, Link } from '@reach/router';
 import PhotoForm from "../components/PhotoForm";
-
+import { Router,Redirect } from '@reach/router'
+import Cookies from 'js-cookie';
 const CreatePhoto = (props) => {
 
     const [error, setError]= useState([]);
@@ -27,10 +28,17 @@ const CreatePhoto = (props) => {
     }
 
     return (
+        <>
+        {Cookies.get('userId')===undefined?
+        <Redirect to='/' noThrow/>
+        :
+    
         <div>
             <h1>Share with us your Photo</h1>
             <PhotoForm onSubmitProp={createPhoto}  photo_error={error}/>
         </div>
+}
+        </>
     )
 }
 

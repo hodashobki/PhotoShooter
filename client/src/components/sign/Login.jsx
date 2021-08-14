@@ -142,16 +142,15 @@ export default function Login({ setLoginUser }) {
                         >
                             Log In
                         </Button> */}
-                        <br></br>   <br></br>   <br></br>   <br></br>   <br></br>
+                        <br></br>   <br></br>   <br></br>    
                         <Link  >
-
-                            <button fullWidth
-                                variant="contained"
-                                color="primary"
-
+                            <button  fullWidth
+                            variant="contained"
+                            color="primary" 
+                            style={{backgroundColor:"darkBlue", color:"white", width:"150px", height:"30px",borderBlockColor: "darkBlue", borderRadius:"7px"}}
                                 className={classes.submit}
-                                type="submit"
-                                onClick={(e) => login(e)}>LogIn</button>
+                                type="submit" 
+                                 onClick={(e) => login(e)}>Login</button>
 
                         </Link>
                         <Grid container>
