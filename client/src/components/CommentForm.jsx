@@ -33,7 +33,7 @@ const CommentForm = (props) => {
             
             {text_error.map((err, index) => <p style={{color:"red"}} key={index}>{err}</p>)}
            
-            <form onSubmit={onSubmitHandler}>
+            <form onSubmit={onSubmitHandler} >
 
             <TextField style={{width:"100%"}} id="standard-basic" label="Comment" onChange={(e)=>validateText(e.target.value)} value={text}/>
             <Button style={{display:"block"}} type="submit" variant="contained" color="primary">

@@ -36,21 +36,26 @@ const CreatComment = (props) => {
   };
   return (
     <div style={{ display: "flex", justifyContent: "space-around" }}>
-      <div style={{  backgroundImage: "linear-gradient(to right, #232526 ,#414345)",color:"white",width: "500px",}}>
+      <div style={{ borderRadius: "15px", color:"white",width: "500px", display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between"}}>
           <h2>Comments:</h2>
         <Carousel interval={3500}>
+          
           {photo.photo.comments.map((comment, idx) => (
             <div
               style={{
+                backgroundImage: "linear-gradient(to right, #232526 ,#414345)",
                 borderRadius: "8px",
                 width: "100%",
-                height: "80px",
+                height: "150px",
                 boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
               
               }}
               key={idx}
             >
               <p>{comment.user.name} :</p>
+              <br></br>
               <p>{comment.text}</p>
             </div>
           ))}
@@ -63,7 +68,7 @@ const CreatComment = (props) => {
       <div
         style={{
           width: "500px",
-          backgroundImage: "linear-gradient(to right, #232526 ,#414345)",
+         
           color: "white",
         }}
       >
