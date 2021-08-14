@@ -21,7 +21,9 @@ const style={
   back :{
       backgroundImage: "url(" + back + ")",
       backgroundRepeat: "no-repeat",
-      backgroundAttachment: "fixed"
+      backgroundAttachment: "fixed",
+      backgroundSize: "cover"
+
 
   }
 }
