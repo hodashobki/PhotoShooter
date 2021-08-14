@@ -31,7 +31,8 @@ function App() {
       <Header />
       <Router >
         <Main path="/" />
-        {user && user._id ? <HomePage path="/homepage" setLoginUser={setLoginUser} /> : <Login path="/login" setLoginUser={setLoginUser} />}
+        {user && user._id ? <HomePage path="/homepage" setLoginUser={setLoginUser} /> 
+      : <Login path="/login" setLoginUser={setLoginUser} />}
         <Login path="/login" setLoginUser={setLoginUser} />
         <Register path="/register" />
         <PhotoDetails path="/photo/:idp" />
