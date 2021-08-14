@@ -7,6 +7,7 @@ import Carousel from "react-material-ui-carousel";
 
 const CreatComment = (props) => {
   const {id, photo } = props;
+  const [isloded,setIsLoded]=useState(false);
 
   // console.log("look here",photo.photo.comments);
   const [error, setError] = useState([]);
@@ -14,6 +15,7 @@ const CreatComment = (props) => {
     console.log(comment)
     axios.post("http://localhost:8000/api/comment/" + id, comment)
       .then((res) => {
+        setIsLoded(true);
         navigate("/photo/"+id); //navigate to the show comments page
       })
       .catch((err) => {
@@ -38,17 +40,11 @@ const CreatComment = (props) => {
   flexDirection: "column",
   justifyContent: "space-between"}}>
           <h2>Comments:</h2>
-        <Carousel interval={3500}>
-        {photo.photo.comments.map((item)=>{
-          return (
-            <div> <p><span>{item.person} said:</span>{item.com}</p>
-           
-            </div>
-           
-          );
-        })}
+       
+          <Carousel interval={3500}>
+       
           
-          {/* {photo.photo.comments.map((comment, idx) => (
+          {photo.photo.comments.map((comment, idx) => (
             <div
               style={{
                 backgroundImage: "linear-gradient(to right, #232526 ,#414345)",
@@ -60,11 +56,11 @@ const CreatComment = (props) => {
               }}
               key={idx}
             >
-              <p>{comment.user.name} :</p>
+              <p>{comment.person} :</p>
               <br></br>
-              <p>{comment.text}</p>
+              <p>{comment.com}</p>
             </div>
-          ))} */}
+          ))}
         </Carousel>
         <div style={{ width: "100%", backgroundColor: "white" }}>
           <CommentForm onSubmitProp={createComments} text_error={error} />

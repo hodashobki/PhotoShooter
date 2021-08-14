@@ -8,6 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Logo from './Logo';
 import Button from '@material-ui/core/Button'
 import axios from "axios"
+import Cookies from 'js-cookie'
 
 
 
@@ -75,13 +76,13 @@ const login = (e) => {
   e.preventDefault();
   navigate("/login")
 }
-const chat=(e)=>{
+const chat = (e) => {
   e.preventDefault();
   navigate("/join");
 }
-const postPhoto=(e)=>{
+const postPhoto = (e) => {
   e.preventDefault();
-  navigate("/createPhoto/611681c52b69a24dd4edb3c5");
+  navigate("/createPhoto/6117a417f1bbf84a94e77bcf");
 }
 
 
@@ -92,6 +93,7 @@ export default function SearchAppBar() {
   const logout = user => {
     axios.get('http://localhost:8000/api/logout', user)
       .then(res => {
+        Cookies.remove('userId')
         navigate("/login")
       })
   }

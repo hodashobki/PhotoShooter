@@ -7,6 +7,7 @@ const Main = (props) => {
     const [photos, setPhotos] = useState({});
     // const [photo,setPhotoo]=useState({});
     const [isLoaded, setLoaded] = useState(false);
+    const [test, setTest] = useState(false)
     // const [likes,setLikes]=useState(0);
     useEffect(()=>{
         axios.get('http://localhost:8000/api/phots/')
@@ -14,13 +15,15 @@ const Main = (props) => {
                 setPhotos(res.data);
                 setLoaded(true);
             });
-    },[]);
+    },[test]);
 
-
+    const updatePhotos = (random) => {
+        setTest(random);
+    }
     return (
         <div>
             <h1>All Of Our Albums</h1>
-            {isLoaded ?<PhotoCards photos={photos}/>:<p>loading .......</p>}
+            {isLoaded ?<PhotoCards photos={photos} updatePhotos={updatePhotos} test={test}/>:<p>loading .......</p>}
 
             
         </div>

@@ -76,9 +76,12 @@ module.exports.creatNewPhot = async (req, res) => {
 //     .catch(err => res.status(400).json({ message: "Something went wrong", error: err }));
 // };
  module.exports.updateExistingPhot=(req,res)=>{
+     console.log(req.body)
    
      Phot.findOneAndUpdate({_id:req.params.id},req.body,{new:true})
-     .then(updatePhot=>res.json({phot:updatePhot}))
+     .then(updatePhot=>{res.json({phot:updatePhot}),
+      console.log(" i am in then backend ")
+    })
      .catch(err => res.json({ message: "Something went wrong", error: err }));
  };
 
