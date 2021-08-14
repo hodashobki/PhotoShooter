@@ -94,7 +94,7 @@ export default function Login({ setLoginUser }) {
                 setLoginUser(res.data.user)
                 // history.push("/login")
                 // history.push("/")
-                navigate("/homepage")
+                navigate("/")
             })
     }
 
@@ -159,8 +159,7 @@ export default function Login({ setLoginUser }) {
                             <button  fullWidth
                             variant="contained"
                             color="primary" 
-                            style ={{ margin: "theme".spacing(3, 0, 2),
-                                backgroundColor: "darkBlue"}} 
+                        
                                 className={classes.submit}
                                 type="submit" 
                                  onClick={(e) => login(e)}>LogIn</button>

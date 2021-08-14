@@ -87,7 +87,7 @@ export default function Register() {
                 // history.push("/login")
 
             })
-            .then(navigate("/homepage"))
+            .then(navigate("/"))
             .catch(err => console.log(err))
         // .catch(alert("invlid input"))
 
