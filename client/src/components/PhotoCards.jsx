@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 const PhotoCards = (props) => {
    
-    const {photos}=props;
+    const {photos, test, updatePhotos}=props;
     const [like,setLikes]=useState(0);
     const [photoo,setPhotoo]=useState({});
    
@@ -59,28 +59,26 @@ const PhotoCards = (props) => {
     };
 
 
-  const addToLikes=(id)=>{
+  const addToLikes=(id,i)=>{
+    console.log("a like")
+    
      var likedphoto=photos.filter(photo=>photo._id===id)
-       setPhotoo(likedphoto[0]);
-    var user = likedphoto[0].user;
-    var desc=  likedphoto[0].desc;
-    var img = likedphoto[0].img;
-    var title= likedphoto[0].title;
-    var like= likedphoto[0].like +1
-    var comments= likedphoto[0].comments
-    setPhot({user, desc, img, title, like, comments })
-    //   photo.like + =1 ;
-      axios.put("http://localhost:8000/api/update/"+id,newphot)
-      .then(res=>{})
+      //  setPhotoo(likedphoto[0]);
    
-            //  setLikes(like);
+     likedphoto[0].like  = likedphoto[0].like+1;
+    console.log(likedphoto[0])
+   
+      axios.put("http://localhost:8000/api/phots/update/"+id,likedphoto[0])
+      .then(res=>updatePhotos(!test))
+   
 
   }
+
     return (
         <div>
             <div>
             <center>
-           {photos.map((photo)=>{
+           {photos.map((photo,i)=>{
                return(
 
                 <Card key={photo._id} className={classes.root}>
@@ -130,7 +128,7 @@ const PhotoCards = (props) => {
                 </CardContent>
                 <CardActions disableSpacing>
                   <IconButton aria-label="add to favorites"
-                   onClick={(e)=>{addToLikes(photo._id)}}>
+                   onClick={(e,i)=>{addToLikes(photo._id,i)}}>
                     <FavoriteIcon />
                   </IconButton>
                 

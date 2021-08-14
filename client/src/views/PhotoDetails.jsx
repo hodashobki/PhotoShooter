@@ -17,12 +17,12 @@ const PhotoDetails = (props) => {
         })
         .catch(err => console.log(err));
 
-    }, [props.idp]);
+    }, []);
 
     return (
         <div >
 
-            {loaded && <CreateComment photo={photo} id={idp} />}
+            {loaded ? <CreateComment photo={photo} id={idp} />:<p>Looding......</p>}
             
         </div>
         
