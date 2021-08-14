@@ -81,7 +81,7 @@ const chat=(e)=>{
 }
 const postPhoto=(e)=>{
   e.preventDefault();
-  navigate("/createPhoto/611681c52b69a24dd4edb3c5");
+  navigate("/createPhoto/6117a417f1bbf84a94e77bcf");
 }
 
 
