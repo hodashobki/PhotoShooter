@@ -17,6 +17,7 @@ import { navigate } from '@reach/router';
 // import "./register.css"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
+import Cookies from 'js-cookie'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Register() {
-    const classes = useStyles();
+    const 
+    classes = useStyles();
     // const Register = () => {
 
     const history = useHistory()
@@ -69,11 +71,11 @@ export default function Register() {
         axios.post("http://localhost:8000/api/register", user)
             .then(res => {
                 console.log("asd")
+                Cookies.set('userId', res.data.user._id)
                 // alert(res.data.message)
                 // history.push("/login")
 
                 // history.push("/login")
-
             })
             .then(navigate("/"))
             .catch(err => console.log(err))

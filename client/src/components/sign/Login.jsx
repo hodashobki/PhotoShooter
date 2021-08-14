@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundImage: 'url(https://source.unsplash.com/random)',
         backgroundRepeat: 'no-repeat',
         backgroundColor:
-        theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+            theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
         backgroundSize: 'cover',
         backgroundPosition: 'center',
     },
@@ -78,8 +78,9 @@ export default function Login({ setLoginUser }) {
             .then(res => {
                 // alert(res.data.message)
                 Cookies.set('userId', res.data.user._id)
+                // Cookies.set('userId', res.data.user._id)
 
-                setLoginUser(res.data.user)
+                setLoginUser(res.data.user._id)
                 // history.push("/login")
                 // history.push("/")
                 navigate("/")
@@ -144,13 +145,13 @@ export default function Login({ setLoginUser }) {
                         <br></br>   <br></br>   <br></br>   <br></br>   <br></br>
                         <Link  >
 
-                            <button  fullWidth
-                            variant="contained"
-                            color="primary" 
-                        
+                            <button fullWidth
+                                variant="contained"
+                                color="primary"
+
                                 className={classes.submit}
-                                type="submit" 
-                                 onClick={(e) => login(e)}>LogIn</button>
+                                type="submit"
+                                onClick={(e) => login(e)}>LogIn</button>
 
                         </Link>
                         <Grid container>
