@@ -101,7 +101,7 @@ const PhotoCards = (props) => {
                 <Link to={"/photo/"+photo._id}><CardMedia
                   className={classes.media}
                   image={photo.img}
-                  title="Paella dish"
+                  title={photo.title}
                 >
                 </CardMedia></Link>
                 <Link to={"/photographer/"+photo.user._id}><CardContent>

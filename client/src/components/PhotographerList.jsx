@@ -71,9 +71,9 @@ const {photographer}=props;
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="../images/photoo.jpg"
+          image={photoo}
           title="Photographer"> 
-            <img style= {style.lo} src={photoo} alt="PhotoShooter logo" />
+            {/* <img style= {style.lo} src={photoo} alt="PhotoShooter logo" /> */}
 
           </CardMedia>
         <CardContent>
