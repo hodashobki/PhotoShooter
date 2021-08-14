@@ -8,15 +8,13 @@ import PhotographerDetail from './views/PhotographerDetail'
 import PhotoDetails from './views/PhotoDetails'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Join from './components/Socket/Join/Join'
-import Chat from './components/Socket/Chat/Chat'
-import Logo from './components/Logo';
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from 'react';
 import HomePage from './views/HomePage';
 import back from './images/back.jpeg'
 import CookieConsent from "react-cookie-consent" ;
 import CreatComment from './views/CreatComment';
+import Chatt from './components/Chatt';
 
 const style={
   back :{
@@ -44,8 +42,7 @@ function App() {
         <CreatePhoto path="/createPhoto/:idu" />
         <CreatComment path="/comment/:idp"/>
         <PhotographerDetail path="/photographer/:id" />
-        <Join path="/join"/>
-        <Chat path="/chat/:name/:room" />
+        <Chatt path="/chat"/>
 
       </Router>
       <Footer />

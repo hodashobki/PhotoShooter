@@ -78,7 +78,7 @@ const login = (e) => {
 }
 const chat = (e) => {
   e.preventDefault();
-  navigate("/join");
+  navigate("/chat");
 }
 const postPhoto = (e) => {
   e.preventDefault();

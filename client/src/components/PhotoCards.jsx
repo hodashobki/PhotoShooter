@@ -121,15 +121,15 @@ const PhotoCards = (props) => {
                    {photo.desc}
                   </Typography>
                 </CardContent>
-                <CardContent>
+                {/* <CardContent>
                   <Typography variant="body2" color="textSecondary" component="p">
                    {photo.like}
                   </Typography>
-                </CardContent>
+                </CardContent> */}
                 <CardActions disableSpacing>
                   <IconButton aria-label="add to favorites"
                    onClick={(e,i)=>{addToLikes(photo._id,i)}}>
-                    <FavoriteIcon />
+                    <FavoriteIcon  />{photo.like}
                   </IconButton>
                 
                   <IconButton
