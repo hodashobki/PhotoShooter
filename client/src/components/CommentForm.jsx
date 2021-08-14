@@ -29,7 +29,7 @@ const CommentForm = (props) => {
         }
     }
     return (
-        <div >
+        <div>
             
             {text_error.map((err, index) => <p style={{color:"red"}} key={index}>{err}</p>)}
            

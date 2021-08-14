@@ -98,7 +98,7 @@ export default function SearchAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="sticky" style={{ backgroundImage: "linear-gradient(to right, #5fc3e4,#e55d87)" }}>
+      <AppBar position="fixed" style={{ backgroundImage: "linear-gradient(to right, #5fc3e4,#e55d87)" }}>
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <Logo />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -107,8 +107,6 @@ export default function SearchAppBar() {
             <Button color="inherit" onClick={logout}>Log out</Button>
             <Button color="inherit" onClick={chat}>Start A Chat with Us</Button>
             <Button color="inherit" onClick={postPhoto}>Post A Photo</Button>
-
-
 
 
             <div className={classes.search}>
