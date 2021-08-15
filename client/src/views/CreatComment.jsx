@@ -7,15 +7,12 @@ import Carousel from "react-material-ui-carousel";
 
 const CreatComment = (props) => {
   const {id, photo } = props;
-  const [isloded,setIsLoded]=useState(false);
-
-  // console.log("look here",photo.photo.comments);
   const [error, setError] = useState([]);
   const createComments = (comment) => {
-    console.log(comment)
+   
     axios.post("http://localhost:8000/api/comment/" + id, comment)
       .then((res) => {
-        setIsLoded(true);
+       
         navigate("/photo/"+id); //navigate to the show comments page
       })
       .catch((err) => {

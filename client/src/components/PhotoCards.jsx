@@ -80,7 +80,7 @@ const PhotoCards = (props) => {
             <center>
            {photos.map((photo,i)=>{
                return(
-
+                
                 <Card key={photo._id} className={classes.root}>
                 <CardHeader
                   avatar={
@@ -150,6 +150,7 @@ const PhotoCards = (props) => {
                     </Typography>
                     </CardContent>
                 </Collapse>
+                
               </Card>
               
                );
