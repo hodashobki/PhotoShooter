@@ -28,6 +28,22 @@ const CreatePhoto = (props) => {
     }
 
     return (
+
+//         <>
+//         {Cookies.get('userId')===undefined?
+//         <Redirect to='/notfound' noThrow/>
+//         :
+
+
+//         <div >
+//             <h1>Share with us your Photo</h1>
+//         <div style={{display:"flex",justifyContent: "center"}}>
+//             <PhotoForm  onSubmitProp={createPhoto}  photo_error={error}/>
+//             </div>
+//         </div>
+// }
+
+        // </>
         <>
         {Cookies.get('userId')===undefined?
         <Redirect to='/notfound' noThrow/>
