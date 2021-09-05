@@ -1,5 +1,6 @@
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import "./chatt.css";
 import React, { useEffect, useRef, useState } from "react"
 import io from "socket.io-client"
 
@@ -43,42 +44,30 @@ const Chatt = (props) => {
 	}
 
 	return (
-        <center>
-		<div >
-          
-    <h2 style={{color: "white" , backgroundImage :"linear-gradient(to right, #2D37A0,#e55d87)" ,width:"200px" , borderRadius :"7px"}} >Chat</h2>
-    <div >
-      <div style={{overflow: "scroll",width: "500px",height: "300px"}}>
-     <p style={{ marginRight: "500px", padding: "10px", clear: "both", color: 'black', borderRadius: "10px", fontSize: " 15px", width: "350px", backgroundColor: "#CDD4DD"}}>{renderChat()}</p> 
-      </div>
-    </div>
-			<form onSubmit={onMessageSubmit}  >
-                <br></br><br></br>
-        
-        <div style={{display: "flex" , marginLeft :"520px" }} >
-				<div className="name-field" >
-					<TextField name="name" onChange={(e) => onTextChange(e)} value={state.name} variant="outlined" label="Name" />
+		<div className="card">
+			<form onSubmit={onMessageSubmit}>
+				<h1>Messenger</h1>
+				<div className="name-field">
+					<TextField name="name" onChange={(e) => onTextChange(e)} value={state.name} label="Name" />
 				</div>
 				<div>
 					<TextField
 						name="message"
 						onChange={(e) => onTextChange(e)}
 						value={state.message}
+						id="outlined-multiline-static"
 						variant="outlined"
 						label="Message"
-                        
 					/>
 				</div>
-        </div>
-        <br></br><br></br>
-				<button style={{backgroundImage :"linear-gradient(to right, #2D37A0,#e55d87)", color:"white" , width :"150px" , height :"30px" ,borderRadius:"7px"}} >Send Message</button>
+				<button>Send Message</button>
 			</form>
-            <br></br><br></br>
-
+			<div className="render-chat">
+				<h1>Chat Log</h1>
+				{renderChat()}
+			</div>
 		</div>
-        </center>
 	)
 }
-
 
 export default Chatt
